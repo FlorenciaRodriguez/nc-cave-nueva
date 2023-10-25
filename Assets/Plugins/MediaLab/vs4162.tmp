@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaLab.Adic.ClientCommunication</name>
+    </assembly>
+    <members>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.IMergeStrategy`1">
+            <summary>
+            Interface for implement a merge strategy of messages
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.IMergeStrategy`1.MergeMessages(`0,`0)">
+            <summary>
+            Merge new message with old message
+            </summary>
+            <param name="oldMessage">Old message</param>
+            <param name="newMessage">New message</param>
+            <returns>Returns message merged</returns>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.MergePropertiesStrategy`1">
+            <summary>
+            New message will be merged the old.
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.MergePropertiesStrategy`1.MergeMessages(`0,`0)">
+            <summary>
+            New message will be merged the old.
+            </summary>
+            <param name="oldMessage">Old message</param>
+            <param name="newMessage">New message</param>
+            <returns>Returns message with properties merged</returns>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.ReplacementStrategy`1">
+            <summary>
+            New message will replace the old.
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.ReplacementStrategy`1.MergeMessages(`0,`0)">
+            <summary>
+            New message will replace the old.
+            </summary>
+            <param name="oldMessage">Old message</param>
+            <param name="newMessage">New message</param>
+            <returns>Returns new message</returns>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstancesStrategy`1">
+            <summary>
+            Configure to send all instances of the message.
+            If already exists messages pending to sent, new messages will be added to the list of messages pending to sent
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1">
+            <summary>
+            Configure to send only one instance of message by identifier.
+            An identifier must be specified for each instance of the message type. In this way, this strategy only sends an  instance of the message by identifier.
+            Uses combination strategy of messages defined if already exists a message with identifier pending to sent
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1.#ctor(System.Func{`0,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1"/> class. 
+            </summary>
+            <param name="extractIdentifierFunction">Function that provide the identifiers of the message</param>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1.#ctor(System.Func{`0,System.Object},MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.IMergeStrategy{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1"/> class. 
+            </summary>
+            <param name="extractIdentifierFunction">Function that provide the identifiers of the message</param>
+            <param name="mergeStrategy">Defines what merging strategy the sender uses to resolve when a message pending to sent already exists</param>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1.MergeStrategy">
+            <summary>
+            Gets or sets combination strategy of messages to use if already exists a message with identifier pending to sent
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceByIdStrategy`1.ExtractIdentifierFunction">
+            <summary>
+            Gets function that provide the identifiers of the message
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceStrategy`1">
+            <summary>
+            Configure to send only one instance of message.
+            Uses combination strategy of messages defined if already exists a message pending to sent
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceStrategy`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceStrategy`1"/> class. 
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceStrategy`1.#ctor(MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.MergeStrategy.IMergeStrategy{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceStrategy`1"/> class. 
+            </summary>
+            <param name="mergeStrategy">Defines what merging strategy the sender uses to resolve when a message pending to sent already exists</param>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.SendInstanceStrategy`1.MergeStrategy">
+            <summary>
+            Gets or sets combination strategy of messages to use if already exists a message pending to sent
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.ISendStrategy`1">
+            <summary>
+            Interface for implement send strategy
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.ISendStrategy`1.SendMessage(`0)">
+            <summary>
+            Send message to server
+            </summary>
+            <param name="message">Message to send</param>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.ISendStrategy`1.IsPendingForSend">
+            <summary>
+            Returns if there are pending messages sent or not
+            </summary>
+            <returns>Must return true if there are pending messages sent</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.ISendStrategy`1.ClearMessages">
+            <summary>
+            Clear list of messages to send
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.ISendStrategy`1.GetMessages">
+            <summary>
+            Gets list of messages to send
+            </summary>
+            <returns>Must return list of messages to send</returns>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.NetworkEntity.Setting.NetworkEntitySendingSetting`1">
+            <summary>
+            Sending setting for message type
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.NetworkEntity.Setting.NetworkEntitySendingSetting`1.Interval">
+            <summary>
+            Gets sending time interval, expressed in seconds
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.NetworkEntity.Setting.NetworkEntitySendingSetting`1.SendStrategy">
+            <summary>
+            Gets send strategy by interval time
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Setting.NetworkEntitySendingSetting`1.SendImmediately">
+            <summary>
+            Configure to send messages immediately
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.NetworkEntity.Setting.NetworkEntitySendingSetting`1.SetStrategy(MediaLab.Adic.ClientCommunication.NetworkEntity.Strategies.SendStrategy.ISendStrategy{`0},System.Single)">
+            <summary>
+            Configure to send messages using a strategy by interval time
+            </summary>
+            <param name="strategy">Send strategy</param>
+            <param name="intervalTime">Sending interval, expressed in seconds</param>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.ProxyClientCommunication">
+            <summary>
+            Enqueues server events and sets send for each message type
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.CommunicationStatistics">
+            <summary>
+            Get communication statistics of sent and received messages rates
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.GetSendingSetting``1">
+            <summary>
+            Get sending settings of a message type 
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+            <returns>Return the sending settings of the message type T. If T has not settings defined, a default setting will be assigned</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.SendMessage(MediaLab.NetworkEntities.Entities.JsonEntity)">
+            <summary>
+            Send message to server with a defined settings for its type. 
+            If the message has not defined settings, the message will be sent immediately. 
+            To define a sending settings to the message type, use GetSendingSetting function
+            </summary>
+            <param name="jsonEntity">Message to send</param>
+            <returns>Return true if the message was sent or is pending for send<see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.SendMessage(MediaLab.NetworkEntities.Entities.JsonEntity,System.Boolean)">
+            <summary>
+            Send message to server
+            </summary>
+            <param name="jsonEntity">Message to send</param>
+            <param name="forceSending">If true, message is sent immediately</param>
+            <returns>Return true if the message was sent. If parameter forceSending is false, this method executes the same as SendMessage<see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.IsPendingForSend(System.Type)">
+            <summary>
+            Returns if this type of message is pending sending or not
+            </summary>
+            <param name="type">Type of message</param>
+            <returns>Return true if type message is pending sending</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.IsPendingForSend``1">
+            <summary>
+            Returns if this type of message is pending sending or not
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+            <returns>Return true if type message is pending sending</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.CanSendNow``1">
+            <summary>
+            Return if this type of message can be sent now
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+            <returns>Return true if type message can be send now</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.CanSendNow(System.Type)">
+            <summary>
+            Return if this type of message can be sent now
+            </summary>
+            <param name="type">Type of message</param>
+            <returns>Return true if type message can be send now</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.SendPendingMessages(System.Type)">
+            <summary>
+            Send all pending messages to server
+            </summary>
+            <param name="type">Type of message</param>
+            <returns>Return true if all message of type specified are pending sending and were sent</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.SendPendingMessages``1">
+            <summary>
+            Send all pending messages to server
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+            <returns>Return true if all message of type specified are pending sending and were sent</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.CancelPendingSending(System.Type)">
+            <summary>
+            Cancel message pending sending
+            </summary>
+            <param name="type">Type of message</param>
+            <returns>Return true if message is pending sending and was already cancelled</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.CancelPendingSending``1">
+            <summary>
+            Cancel message pending sending
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+            <returns>Return true if message is pending sending and was already cancelled</returns>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.CancelPendingSendings">
+            <summary>
+            Cancel all messages pending sending
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.ClearBuffer``1">
+            <summary>
+            Clear buffer of messages. Cancel messages pending sending and reset timer
+            </summary>
+            <typeparam name="T">Type of message</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.ClearBuffer(System.Type)">
+            <summary>
+            Clear buffer of messages. Cancel messages pending sending and reset timer
+            </summary>
+            <param name="type">Type of message</param>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.ClearBuffers">
+            <summary>
+            Clear all buffer of messages. Cancel messages pending sending and reset timer
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.Update">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.HandleClientDataReceivedJsonEntity(System.Object,MediaLab.NetworkEntities.Entities.JsonEntity)">
+            <summary>
+            Add event to queue: message received. Event received on secondary thread
+            </summary>
+            <param name="sender">Sender of event</param>
+            <param name="entity">Message received</param>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.ProxyClientCommunication.HandleClientDisconnected(MediaLab.Communication.TCP.MlTcpClient.MlTcpClient,System.String)">
+            <summary>
+            Add event to queue: client disconnected. Event received on secondary thread
+            </summary>
+            <param name="tcpClient">Sender of event</param>
+            <param name="info">Information of event</param>
+            <returns>Return always true</returns>
+        </member>
+        <member name="T:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics">
+            <summary>
+            Class for communication statistics of sent and received messages rates
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.TimeWindow">
+            <summary>
+            Get or set time window for data collection
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.MaximumMessageSentRate">
+            <summary>
+            Get maximum rate of messages sent in the last time window
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.CurrentMessageSentRate">
+            <summary>
+            Get current rate of messages sent in the last time window
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.MaximumMessageReceivedRate">
+            <summary>
+            Get maximum rate of messages received in the last time window
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.CurrentMessageReceivedRate">
+            <summary>
+            Get current rate of messages received in the last time window
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.Enabled">
+            <summary>
+            Enables or disables data collection for statistics
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.ClientCommunication.Statistics.CommunicationStatistics.ResetStatistics">
+            <summary>
+            Reset statistics
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441aecb9855e73c49aa5040b8d8ff379, type: 3}
+  m_Name: Night
+  m_EditorClassIdentifier: 
+  dayTime: 4
+  postProcessingProfile: {fileID: 11400000, guid: 84c772b140230654db974136d6fb4ea7,
+    type: 2}
+  enableDirectionLight: 0
+  directionLightRotation: {x: -30, y: 220, z: 180}
+  lightIntensity: 50000
+  lightColor: {r: 0.69411767, g: 0.6666667, b: 1, a: 1}
+  artificialLightingIntensity: 400000
+  artificialLightingColor: {r: 0.9490196, g: 0.9933915, b: 1, a: 1}
+  enableArtificialLight: 1
+  dustParticleColor: {r: 0.19607843, g: 0.21960784, b: 0.3019608, a: 0.078431375}

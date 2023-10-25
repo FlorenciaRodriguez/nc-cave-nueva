@@ -1,0 +1,12 @@
+<Settings>
+	<!-- Path debe ser relativo a la ubicacion de este archivo. Debe configurarse con la ubicacion del script de build del repositorio -->
+	<BuildPSScript Path="..\..\..\..\..\..\..\Build\Build.ps1" />
+	<Visual>
+		<BuildSetting>
+			<Solutions>
+				<!-- Path debe ser relativo a la ubicacion del script de build del repositorio (establecido en el atributo Path del nodo BuildPSScript) -->
+				<Solution IDE="VS" VSVersion="2017" Configuration="DebugUnity" Rebuild="True" Platform="Any CPU" Path="..\Visual\Workspace\MediaLab.Unity.Simpa\MediaLab.Unity.FW.Simpa.sln" />
+			</Solutions>
+		</BuildSetting>
+	</Visual>
+</Settings>

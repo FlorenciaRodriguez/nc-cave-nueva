@@ -1,0 +1,39 @@
+<Resources>
+	<!-- En caso de tener que copiar archivos o carpetas en la carpeta del ejecutable 
+		 Para Origin, el directorio padre es el directorio del proyecto de Unity
+		 Para FolderDestination, el directorio padre es el directorio del ejecutable que genera el deploy de Unity -->
+	<ExecutableFolder>
+		<CopyResources>
+            <CopyResource>
+                <Origin>NLog.config</Origin>
+                <FolderDestination>.</FolderDestination>
+            </CopyResource>
+		</CopyResources>
+	</ExecutableFolder>
+	
+	<!-- En caso de tener que copiar archivos o carpetas en la carpeta Data donde se genera el ejecutable 
+		 Para Origin, el directorio padre es el directorio del proyecto de Unity
+		 Para FolderDestination, el directorio padre es el directorio Data que genera el deploy de Unity -->
+	<DataFolder>
+		<CopyResources>
+			<CopyResource>
+				<Origin>Assets/Plugins/MediaLab/MediaLab.Simpa.Settings.dll.config</Origin>
+				<FolderDestination>Managed</FolderDestination>
+			</CopyResource>
+			<!--
+			<CopyResource>    
+                <Origin>Assets/Plugins/MediaLab/MediaLab.Hardware.xml</Origin>
+                <FolderDestination>Managed</FolderDestination>
+            </CopyResource>   
+            <CopyResource>    
+                <Origin>Assets/Plugins/MediaLab/MediaLab.InputEventManager.xml</Origin>
+                <FolderDestination>Managed</FolderDestination>
+            </CopyResource>
+			<CopyResource>
+                <Origin>MediaLab.Unity.Forklift.Wwise/GeneratedSoundBanks</Origin>
+                <FolderDestination>StreamingAssets/Audio</FolderDestination>
+            </CopyResource>
+        	-->
+		</CopyResources>
+	</DataFolder>
+</Resources>

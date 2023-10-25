@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaLab.NetworkEntities.Simpa</name>
+    </assembly>
+    <members>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.PipeWeight">
+            <summary>
+            Drill pipe weight. Unit: Tn (Constant)
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.PipeHeight">
+            <summary>
+            Drill pipe height. Unit: ft (Constant)
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.PipeCount">
+            <summary>
+            Number of drill pipes connected to drill string
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.StringWeight">
+            <summary>
+            Drill string weight. Unit: Tn
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TopDrivePosition">
+            <summary>
+            Current Top Drive position (Top Drive lower limit). Unit: ft.
+            Current position value between <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrillStopPoint"/> and <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HighTravelStop"/>
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TopOfBlockPosition">
+            <summary>
+            Current Top of block position (Top Drive upper limit). Unit: ft
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrillStopPoint">
+            <summary>
+            Top Drive drilling stop point. Unit: ft.
+            Dispath <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrillStopPoint"/> action to change value
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HighTravelStop">
+            <summary>
+            Top Drive hight travel stop. Unit: ft.
+            Dispath <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHighTravelStop"/> action to change value
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HighTravelLimit">
+            <summary>
+            Top Drive hight travel limit. Unit: ft.
+            Dispath <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHighTravelLimit"/> action to change value
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsTopDriveConnected">
+            <summary>
+            Is Top Drive connected to drill string?
+            Dispath <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.ClampTopDrive"/> action to connect Top Drive to drill string.
+            Dispath <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.ReleaseTopDrive"/> action to disconnect Top Drive to drill string
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsNewPipeConnected">
+            <summary>
+            Is new pipe connected to drill string?
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsRotarySlipPlaced">
+            <summary>
+            Is rotary slip placed to lock drill string position?
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsAutodrill">
+            <summary>
+            Is autodrill mode activated?
+            If true, dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetWob"/> action to set <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TargetWob"/>. <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HookLoad"/> is calculated.
+            If false, dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHookLoad"/> action to set <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HookLoad"/>. <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.Wob"/> is calculated.
+            Dispath <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetAutodrill"/> action to activate or deactivate autodrill mode
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HookLoad">
+            <summary>
+            The total force pulling down on the hook. Unit: Klb (Kilopound). 1 Klb = 1 × 4448.22 = 4448.22 Newton.
+            If <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsAutodrill"/> is activated, then hook load is calculated based on <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.StringWeight"/> and <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TargetWob"/>.
+            If <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsAutodrill"/> is deactivated, then dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHookLoad"/> action to change value, between <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MinimumHookLoad"/> and <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumHookLoad"/>
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MinimumHookLoad">
+            <summary>
+            The minimum value of <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HookLoad"/>. Unit: Klb (Kilopound)
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumHookLoad">
+            <summary>
+            The maximum value of <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HookLoad"/>. Unit: Klb (Kilopound)
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.Wob">
+            <summary>
+            Weight on bit. Unit: Klb (Kilopound).
+            If <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsAutodrill"/> is activated, then WOB is calculated based on <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TargetWob"/>.
+            If <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsAutodrill"/> is deactivated, then WOB is calculated based on <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.StringWeight"/> and <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.HookLoad"/>
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumWob">
+            <summary>
+            The maximum value of <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.Wob"/>. Unit: Klb (Kilopound)
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TargetWob">
+            <summary>
+            Target WOB value when autodrill mode is activated. Unit: Klb (Kilopound).
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetWob"/> action to change value
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrillStringAngularSpeed">
+            <summary>
+            Current angular speed of drill string. Unit: RPM
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.TargetDrillStringAngularSpeed">
+            <summary>
+            Target angular speed of drill string. Unit: RPM.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetDrillStringAngularSpeed"/> action to change value
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrillStringLinearSpeed">
+            <summary>
+            Current linear speed of drill string. Unit: ft/h.
+            Negative value: drilling speed (<see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.Rop"/>).
+            Positive value: hoist speed
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumDrillingLinearSpeed">
+            <summary>
+            Maximum drilling speed. The minimum value of <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrillStringLinearSpeed"/>. Unit: ft/h
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumHoistLinearSpeed">
+            <summary>
+            Maximum hoist speed. The maximum value of <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrillStringLinearSpeed"/>. Unit: ft/h
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.Rop">
+            <summary>
+            Rate of penetration. Unit: ft/h
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsSlowMode">
+            <summary>
+            Is slow mode activated?
+            If true, <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumDrillingLinearSpeed"/> and <see cref="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MaximumHoistLinearSpeed"/> are limited
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetSlowMode"/> action to activate or deactivate slow mode.
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsDrawworkEnabled">
+            <summary>
+            Is drawwork raise or lower control enabled?
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsDrawworkActivated">
+            <summary>
+            Is drawwork raise or lower control enabled and activated?
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrawworkActive"/> action to activate or deactivate drawwork.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrawworkDirection"/> action to manually raise or lower the drawwork
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.DrawworkSpeed">
+            <summary>
+            Current drawwork speed. Unit: ft/h.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrawworkDirection"/> action to manually raise or lower the drawwork
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsMudPumpOn">
+            <summary>
+            Mud pump status (on or off).
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.TurnOnMudPump"/> action to turn on mud pump.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.TurnOffMudPump"/> action to turn off mud pump
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MudPumpSpeed">
+            <summary>
+            Current mud pump speed. Unit: RPM
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MudPumpTargetSpeed">
+            <summary>
+            Target mud pump speed value. Unit: RPM.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetMudPumpSpeed"/> action to change value
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.MudPumpPressure">
+            <summary>
+            Current mud pump pressure. Unit: PSI
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsMudValveOpened">
+            <summary>
+            Mud valve status (opened or closed).
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.OpenMudValve"/> action to open mud valve.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.CloseMudValve"/> action to close mud valve
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.Torque">
+            <summary>
+            Current torque. Unit: Kft-lb
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.IsElevatorLinkConnected">
+            <summary>
+            Is elevator link connected to pipe?
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.ElevatorLinkAngle">
+            <summary>
+            Current elevator link angle. Unit: deg
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.DrillingModelEntity.ElevatorLinkSpeed">
+            <summary>
+            Current elevator link angular speed. Unit: deg/s.
+            Positive value: unfolding elevator link.
+            Negative value: retracting elevator link.
+            Zero value: elevator link stopped.
+            Dispatch <see cref="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetElevatorLinkDirection"/> action to retract or unfold elevator link.
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.CameraPositionEntity.Rotation">
+            <summary>
+            Value between -180 and 180
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Assets.LocationEntity.ScreenPoint">
+            <summary>
+            Coordenadas del punto
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.LocationGuyEntity.ScreenPoint">
+            <summary>
+            Coordenadas del punto
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.MomentOfTheDayEntity.MomentOfTheDay">
+            <summary>
+            Momento del día
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.AppViewEntity.AppView">
+            <summary>
+            Tipo de vista seleccionada
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.ActiveExerciseConfigurationEntity.ShowPath">
+            <summary>
+            Mostrar ayuda visual del recorrido
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.ActiveExerciseConfigurationEntity.ShowCheckPoints">
+            <summary>
+            Mostrar ayuda visual de los puntos de control
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.ActiveExerciseConfigurationEntity.ShowWarnings">
+            <summary>
+            Mostrar ayuda visual de los warnings
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.CustomSettingsEntity.Name">
+            <summary>
+            Nombre compuesto por: tipodecultivo_altura
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.ScenarioSettingsEntity.Name">
+            <summary>
+            Nombre compuesto
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Configuration.ScenarioSettingsEntity.VisualScenario">
+            <summary>
+            Escenario con las configuraciones para mergear al ejercicio
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.ClampTopDrive">
+            <summary>
+            Connect Top Drive to drill string (Pipe Adjustements panel)
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.ReleaseTopDrive">
+            <summary>
+            Disconnect Top Drive to drill string (Pipe Adjustements panel)
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.OpenMudValve">
+            <summary>
+            Open mud valve (IBOP panel)
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.CloseMudValve">
+            <summary>
+            Close mud valve (IBOP panel)
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.TurnOnMudPump">
+            <summary>
+            Turn on mud pump (Pump Controls)
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.TurnOffMudPump">
+            <summary>
+            Turn off mud pump (Pump Controls)
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetMudPumpSpeed">
+            <summary>
+            Change target mud pump speed.
+            Required value: Target RPM
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetDrillStringAngularSpeed">
+            <summary>
+            Change target drill string angular speed.
+            Required value: Target RPM
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetAutodrill">
+            <summary>
+            Activate or deactivate autodrill mode. If true, Target WOB is set and Hook Load is calculated. If false, Hook Load is set and WOB is calculated
+            Positive value: autodrill mode activated.
+            Negative value: autodrill mode deactivated.
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHookLoad">
+            <summary>
+            Change hook load when autodrill mode is deactivated
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetTargetWob">
+            <summary>
+            Change target WOB when autodrill mode is activated
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrillStopPoint">
+            <summary>
+            Change drill stop point.
+            Required value: Positive ft
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHighTravelStop">
+            <summary>
+            Change high travel stop.
+            Required value: Positive ft
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetHighTravelLimit">
+            <summary>
+            Change high travel limit.
+            Required value: Positive ft
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetElevatorLinkDirection">
+            <summary>
+            Retract or unfold elevator link.
+            Positive value: Unfold elevator link.
+            Negative value: retract elevator link.
+            Zero value: stop elevator link
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrawworkActive">
+            <summary>
+            Activate or deactivate drawwork
+            Positive value: drawwork activated.
+            Negative value: drawwork deactivated.
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetDrawworkDirection">
+            <summary>
+            Move drawwork
+            Positive value: move up
+            Negative value: mode down
+            Zero value: stop 
+            </summary>
+        </member>
+        <member name="F:MediaLab.NetworkEntities.Simpa.Constants.OperationActionEnum.SetSlowMode">
+            <summary>
+            Activate or deactivate slow mode. Limit maximum lower and hoist speed (ROP)
+            Positive value: slow mode activated.
+            Negative value: slow mode deactivated.
+            </summary>
+        </member>
+        <member name="P:MediaLab.NetworkEntities.Simpa.Instruction.ActivityStateControlActionEntity.ErrorCode">
+            <summary>
+            Error code
+            </summary>
+        </member>
+    </members>
+</doc>

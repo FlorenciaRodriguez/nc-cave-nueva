@@ -1,0 +1,2109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaLab.Adic.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:MediaLab.Adic.Extensions.BindingCaller.BindCallerContainerExtension">
+            <summary>
+            Initializable caller container extension.
+            Intercepts bindings and resolutions to check whether objects to be initialized after binding resolution
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingCaller.BindCallerContainerExtension.Init(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes the extension. Called after all extensions have been registered.
+            </summary>
+            <param name="container">The container into which the extension is registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingCaller.BindCallerContainerExtension.OnRegister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is registered on the container.
+            
+            When the method is called, subscribe to any events the container may provide.
+            </summary>
+            <param name="container">The container into which the extension is being registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingCaller.BindCallerContainerExtension.OnUnregister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is unregistered from the container.
+            
+            When the method is called, unsubscribe from any events on the container.
+            </summary>
+            <param name="container">The container from which the extension is being unregistered.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.BindingCaller.IBindContainer">
+            <summary>
+            Called after binding resolution on container
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingCaller.IBindContainer.BindOnContainer(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called after binding resolution on container
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.BindingCaller.IUnbindContainer">
+            <summary>
+            Called before unbinding resolution on container
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingCaller.IUnbindContainer.UnbindOnContainer(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called before unbinding resolution on container
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.BindingsSetup.BindingPriority">
+            <summary>
+            Indicates that a certaing <see cref="T:MediaLab.Adic.Extensions.BindingsSetup.IBindingsSetup"/> class has priority when used from
+            SetupBindings() with namespace.
+            </summary>
+            <remarks>
+            It's possible to pass a number to indicate the priority. Higher values indicates higher priorities.
+            </remarks>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingPriority.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.BindingsSetup.BindingPriority"/> class.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingPriority.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.BindingsSetup.BindingPriority"/> class.
+            </summary>
+            <param name="priority">inding priority.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.BindingsSetup.BindingPriority.Priority">
+            <summary>Binding priority.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension">
+            <summary>
+            Provides bindings setup capabilities to <see cref="T:MediaLab.Adic.Framework.Container.IInjectionContainer"/>.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.SetupBindings``1(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Setups bindings in the container.
+            </summary>
+            <typeparam name="T">The bindings setup object type.</typeparam>
+            <param name="container">Container in which the bindings will be setup.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.SetupBindings(MediaLab.Adic.Framework.Container.IInjectionContainer,System.Type)">
+            <summary>
+            Setups bindings in the container.
+            </summary>
+            <param name="container">Container in which the bindings will be setup.</param>
+            <param name="type">The bindings setup object type.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.SetupBindings(MediaLab.Adic.Framework.Container.IInjectionContainer,MediaLab.Adic.Extensions.BindingsSetup.IBindingsSetup)">
+            <summary>
+            Setups bindings in the container.
+            </summary>
+            <param name="container">Container in which the bindings will be setup.</param>
+            <param name="setup">The bindings setup.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.SetupBindings(MediaLab.Adic.Framework.Container.IInjectionContainer,System.String)">
+            <summary>
+            Setups bindings in the container from a given namespace and its children namespaces.
+            </summary>
+            <param name="container">Container in which the bindings will be setup.</param>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.SetupBindings(MediaLab.Adic.Framework.Container.IInjectionContainer,System.String,System.Boolean)">
+            <summary>
+            Setups bindings in the container from a given namespace.
+            </summary>
+            <param name="container">Container in which the bindings will be setup.</param>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="includeChildren">Indicates whether child namespaces should be included.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.PrioritizedBindingSetup">
+            <summary>
+            Represents a prioritized binding setup.
+            
+            Used for sorting priorities.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.PrioritizedBindingSetup.Setup">
+            <summary>The binding setup.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.BindingsSetup.BindingsSetupExtension.PrioritizedBindingSetup.Priority">
+            <summary>The given priority setup.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.BindingsSetup.IBindingsSetup">
+            <summary>
+            Represents a bindings setup object.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.BindingsSetup.IBindingsSetup.SetupBindings(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Setups the bindings in a given <paramref name="container"/>.
+            </summary>
+            <param name="container">Container in which the bindings will be setup.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.Behaviours.CommandDispatch">
+            <summary>
+            Provides a routine to call a given command.
+            
+            To dispatch the command, the script looks for a container that
+            has a binding for the given command.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.Behaviours.CommandDispatch.commandType">
+            <summary>The type of the command to be called.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Behaviours.CommandDispatch.DispatchCommand">
+            <summary>
+            Dispatches the command.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Behaviours.CommandDispatch.DispatchCommand(System.Object[])">
+            <summary>
+            Dispatches the command.
+            </summary>
+            <param name="parameters">Command parameters.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Behaviours.CommandDispatch.Awake">
+            <summary>
+            Called when the script is awaken.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.Behaviours.NamespaceCommandBehaviour">
+            <summary>
+            Abstract class for defining behaviours that referes to a command by namespace.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Behaviours.NamespaceCommandBehaviour.CommandNamespace">
+            <summary>The command namespace.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Behaviours.NamespaceCommandBehaviour.CommandName">
+            <summary>The command name.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.Behaviours.TimedCommandDispatch">
+            <summary>
+            Dispatches a command based on a timer.
+            
+            To dispatch the command, the script looks for a container that
+            has a binding for the given command.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Behaviours.TimedCommandDispatch.Timer">
+            <summary>The duration of the timer, in seconds.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Behaviours.TimedCommandDispatch.OnEnable">
+            <summary>
+            Called when the script is enabled.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.Command">
+            <summary>
+            Basic implementation of a command.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.Command.coroutines">
+            <summary>Coroutines started on this command.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.Dispatcher">
+            <summary>The command dispatcher that dispatched this command.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.Tag">
+            <summary>Command tag.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.Running">
+            <summary>Indicates whether the command is running.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.KeepAlive">
+            <summary>Indicates whether the command must be kept alive even after its execution.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.Singleton">
+            <summary>
+            Indicates whether this command is a singleton (there's only one instance of it).
+            
+            Singleton commands improve performance and are the recommended approach when, for every execution
+            of a command, there's no need to reinject dependencies and/or all parameters the command needs
+            are passed through the <code>Execute()</code> method.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.PreloadPoolSize">
+            <summary>The quantity of the command to preload on pool.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Command.MaxPoolSize">
+            <summary>The maximum size pool for this command.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.Execute(System.Object[])">
+            <summary>
+            Executes the command.
+            <param name="parameters">Command parameters.</param>
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.Retain">
+            <summary>
+            Retains the command as in use, not disposing it after execution.
+            
+            Always call Release() after the command has terminated.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.Release">
+            <summary>
+            Release this command.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.Dispose">
+            <summary>Realiza tareas definidas por la aplicación asociadas a la liberación o al restablecimiento de recursos no administrados.</summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.Invoke(System.Action,System.Single)">
+            <summary>
+            Invokes the specified method after a specific time in seconds.
+            </summary>
+            <param name="method">Method to be called.</param>
+            <param name="time">Time to call the method (seconds).</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Starts a coroutine.
+            </summary>
+            <param name="routine">Routine to be started.</param>
+            <returns>The coroutine.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.StopCoroutine(UnityEngine.Coroutine)">
+            <summary>
+            Stops a coroutine.
+            </summary>
+            <param name="coroutine">Coroutine to be stopped.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Command.MethodInvoke(System.Action,System.Single)">
+            <summary>
+            Invokes the specified method after a specific time in seconds using a coroutine.
+            </summary>
+            <param name="method">Method to be called.</param>
+            <param name="time">Time to call the method (seconds).</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher">
+            <summary>
+            Dispatches, releases and handles execution of commands.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.CommandDispatcher.commands">
+            <summary>The available commands, including singletons and pooled.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.CommandDispatcher.container">
+            <summary>The container from which the command dispatcher was created.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.CommandDispatcher.eventCallerExtension">
+            <summary>Underlying behaviour. </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.CommandDispatcher.commandsToRegister">
+            <summary>Commands to be registered during initialization.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.#ctor(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/> class.
+            </summary>
+            <param name="container">Dependency injection container that created the command dispatcher.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Init">
+            <summary>
+            Initializes the dispatcher. Should be called during container initialization.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispatch``1(System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <typeparam name="T">The type of the command to be dispatched.</typeparam>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispatch(System.Type,System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.InvokeDispatch``1(System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <typeparam name="T">The type of the command to be dispatched.</typeparam>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.InvokeDispatch(System.Type,System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Release(MediaLab.Adic.Extensions.Commander.ICommand)">
+            <summary>
+            Releases a command.
+            </summary>
+            <param name="command">Command to be released.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.ReleaseAll">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.ReleaseAll``1">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+            <typeparam name="T">The type of the commands to be released.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.ReleaseAll(System.Type)">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+            <param name="type">The type of the commands to be released.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.ReleaseAll(System.String)">
+            <summary>
+            Releases all commands with a given tag.
+            </summary>
+            <param name="strTag">Command tag.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.ContainsRegistration``1">
+            <summary>
+            Checks whether a given command of <typeparamref name="T"/> is registered.
+            </summary>
+            <typeparam name="T">Command type.</typeparam>
+            <returns><c>true</c>, if registration exists, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.ContainsRegistration(System.Type)">
+            <summary>
+            Checks whether a given command of <paramref name="type"/> is registered.
+            </summary>
+            <param name="type">Command type.</param>
+            <returns><c>true</c>, if registration exists, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.GetAllRegistrations">
+            <summary>
+            Gets all commands registered in the command dispatcher.
+            </summary>
+            <returns>All available registrations.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Starts acoroutine.
+            </summary>
+            <param name="routine">Routine.</param>
+            <returns>Created coroutine.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.StopCoroutine(UnityEngine.Coroutine)">
+            <summary>
+            Stops a coroutine.
+            </summary>
+            <param name="coroutine">Coroutine to be stopped.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.AddCommand(System.Type)">
+            <summary>
+            Adds a command of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The type of the command to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.PoolCommand(System.Type)">
+            <summary>
+            Pools a command of a given type.
+            </summary>
+            <param name="commandType">Command type.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.GetCommandFromPool(System.Type)">
+            <summary>
+            Gets a command from the pool.
+            </summary>
+            <param name="commandType">Command type.</param>
+            <returns>Command or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.GetCommandFromPool(System.Type,System.Collections.Generic.List{MediaLab.Adic.Extensions.Commander.ICommand})">
+            <summary>
+            Gets a command from the pool.
+            </summary>
+            <param name="commandType">Command type.</param>
+            <param name="pool">Pool from which the command will be taken.</param>
+            <returns>Command or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispose">
+            <summary>
+            Releases all resource used by the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/> object.
+            </summary>
+            <remarks>Call <see cref="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispose"/> when you are finished using the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/>. The
+            <see cref="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispose"/> method leaves the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/> in an unusable state. After calling
+            <see cref="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispose"/>, you must release all references to the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/> so the garbage
+            collector can reclaim the memory that the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/> was occupying.</remarks>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.Dispatch(System.Type,MediaLab.Adic.Extensions.Commander.DispatcherOptions,System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="options">Dispatcher options to be applied to the command.</param>
+            <param name="parameters">Command parameters.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.DispatchByTimer(System.Type,MediaLab.Adic.Extensions.Commander.DispatcherOptions,System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="options">Dispatcher options.</param>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommandDispatcher.RegisterCommand(System.Type)">
+            <summary>
+            Register a command for a given type.
+            </summary>
+            <param name="commandType">Type to be registered.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.CommanderContainerExtension">
+            <summary>
+            Container extension for the Commander Adic Extension.
+            
+            Ensures the <see cref="T:MediaLab.Adic.Extensions.Commander.CommandDispatcher"/> is added to the container.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderContainerExtension.Init(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes the extension. Called after all extensions have been registered.
+            </summary>
+            <param name="container">The container into which the extension is registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderContainerExtension.OnRegister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is registered on the container.
+            
+            When the method is called, subscribe to any events the container may provide.
+            </summary>
+            <param name="container">The container into which the extension is being registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderContainerExtension.OnUnregister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is unregistered from the container.
+            
+            When the method is called, unsubscribe from any events on the container.
+            </summary>
+            <param name="container">The container from which the extension is being unregistered.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.CommanderExtension">
+            <summary>
+            Provides command registration capabilities to containers.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderExtension.GetCommandDispatcher(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Gets the command dispatcher in the container.
+            </summary>
+            <param name="container">The container in which the command is registered.</param>
+            <returns>The command dispatcher.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderExtension.RegisterCommand``1(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Register a command of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of the command to be registered.</typeparam>
+            <param name="container">The container in which the command will be registered.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderExtension.RegisterCommand(MediaLab.Adic.Framework.Container.IInjectionContainer,System.Type)">
+            <summary>
+            Register a command of type <paramref name="type"/>.
+            </summary>
+            <param name="container">The container in which the command will be registered.</param>
+            <param name="type">The type of the command to be registered.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderExtension.RegisterCommands(MediaLab.Adic.Framework.Container.IInjectionContainer,System.String)">
+            <summary>
+            Register all commands from a given namespace and its children namespaces.
+            </summary>
+            <param name="container">The container in which the command will be registered.</param>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderExtension.RegisterCommands(MediaLab.Adic.Framework.Container.IInjectionContainer,System.String,System.Boolean)">
+            <summary>
+            Register all commands from a given namespace.
+            </summary>
+            <param name="container">The container in which the command will be registered.</param>
+            <param name="includeChildren">Indicates whether child namespaces should be included.</param>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.CommanderUtils">
+            <summary>
+            Commander utils.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderUtils.GetAvailableCommands">
+            <summary>
+            Gets all the available command types.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderUtils.DispatchCommand(System.Type,System.Object[])">
+            <summary>
+            Dispatches a command.
+            </summary>
+            <param name="type">Command type.</param>
+            <param name="parameters">Command parameters.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.CommanderUtils.GetTypesAsString(System.Type[])">
+            <summary>
+            Gets a distinct list of namespaces from types.
+            </summary>
+            <param name="types">Types to get the namespace from.</param>
+            <returns>The namespaces.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.DispatcherOptions">
+            <summary>
+            Options for dispatched commands.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.DispatcherOptions.dispatcher">
+            <summary>Dispatcher that dispatched the command.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.DispatcherOptions.tag">
+            <summary>Command tag.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.DispatcherOptions.internalCommand">
+            <summary>Command related to the dispatcher options.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.#ctor(MediaLab.Adic.Extensions.Commander.ICommandDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.Commander.DispatcherOptions"/> class.
+            </summary>
+            <param name="dispatcher">Command dispatcher.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.DispatcherOptions.Command">
+            <summary>Command related to the dispatcher options.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.Tag(System.String)">
+            <summary>
+            Tags the dispatched command.
+            
+            Tags are only added to singleton or alive commands.
+            
+            When tagging singleton commands, any previous tags will be replaced.
+            </summary>
+            <param name="strTag">Tag.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.Init">
+            <summary>
+            Initializes the dispatcher. Should be called during container initialization.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.Dispatch``1(System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <typeparam name="T">The type of the command to be dispatched.</typeparam>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.Dispatch(System.Type,System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.InvokeDispatch``1(System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <typeparam name="T">The type of the command to be dispatched.</typeparam>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.InvokeDispatch(System.Type,System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.Release(MediaLab.Adic.Extensions.Commander.ICommand)">
+            <summary>
+            Releases a command.
+            </summary>
+            <param name="command">Command to be released.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ReleaseAll">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ReleaseAll``1">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+            <typeparam name="T">The type of the commands to be released.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ReleaseAll(System.Type)">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+            <param name="type">The type of the commands to be released.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ReleaseAll(System.String)">
+            <summary>
+            Releases all commands with a given tag.
+            </summary>
+            <param name="strTag">Command tag.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ContainsRegistration``1">
+            <summary>
+            Checks whether a given command of <typeparamref name="T"/> is registered.
+            </summary>
+            <typeparam name="T">Command type.</typeparam>
+            <returns><c>true</c>, if registration exists, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ContainsRegistration(System.Type)">
+            <summary>
+            Checks whether a given command of <paramref name="type"/> is registered.
+            </summary>
+            <param name="type">Command type.</param>
+            <returns><c>true</c>, if registration exists, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.GetAllRegistrations">
+            <summary>
+            Gets all commands registered in the command dispatcher.
+            </summary>
+            <returns>All available registrations.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Starts acoroutine.
+            </summary>
+            <param name="routine">Routine.</param>
+            <returns>Created coroutine.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.StopCoroutine(UnityEngine.Coroutine)">
+            <summary>
+            Stops a coroutine.
+            </summary>
+            <param name="coroutine">Coroutine to be stopped.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.DispatcherOptions.ApplyTag">
+            <summary>
+            Applies to tag to a command.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.Exceptions.CommandException">
+            <summary>
+            Command exception.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.Exceptions.CommandException.TypeNotACommand">
+            <summary>
+            Message for exception when the type is not a command
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.Exceptions.CommandException.MaxPoolSize">
+            <summary>
+            Format message for exception when reached max pool size for command
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.Commander.Exceptions.CommandException.NoCommandForType">
+            <summary>
+            Format message for exception when there is no command registered for the type
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Exceptions.CommandException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.Commander.Exceptions.CommandException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.ICommand">
+            <summary>
+            Represents a command.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.Dispatcher">
+            <summary>The command dispatcher that dispatched this command.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.Tag">
+            <summary>Command tag.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.Running">
+            <summary>Indicates whether the command is running.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.KeepAlive">
+            <summary>Indicates whether the command must be kept alive even after its execution.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.Singleton">
+            <summary>
+            Indicates whether this command is a singleton (there's only one instance of it).
+            
+            Singleton commands improve performance and are the recommended approach when, for every execution
+            of a command, there's no need to reinject dependencies and/or all parameters the command needs
+            are passed through the <code>Execute()</code> method.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.PreloadPoolSize">
+            <summary>The quantity of the command to preload on pool.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.ICommand.MaxPoolSize">
+            <summary>The maximum size pool for this command.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommand.Execute(System.Object[])">
+            <summary>
+            Executes the command.
+            <param name="parameters">Command parameters.</param>
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommand.Retain">
+            <summary>
+            Retains the command as in use, not disposing it after execution.
+            
+            Always call Release() after the command has terminated.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommand.Release">
+            <summary>
+            Release this command.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.ICommandDispatcher">
+            <summary>
+            Defines a command dispatcher.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.Init">
+            <summary>
+            Initializes the dispatcher. Should be called during container initialization.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.Dispatch``1(System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <typeparam name="T">The type of the command to be dispatched.</typeparam>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.Dispatch(System.Type,System.Object[])">
+            <summary>
+            Dispatches a command by type.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.InvokeDispatch``1(System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <typeparam name="T">The type of the command to be dispatched.</typeparam>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.InvokeDispatch(System.Type,System.Single,System.Object[])">
+            <summary>
+            Dispatches a command by type after a given time in seconds.
+            </summary>
+            <param name="type">The type of the command to be dispatched.</param>
+            <param name="time">Time to dispatch the command (seconds).</param>
+            <param name="parameters">Command parameters.</param>
+            <returns>Dispatcher options.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.Release(MediaLab.Adic.Extensions.Commander.ICommand)">
+            <summary>
+            Releases a command.
+            </summary>
+            <param name="command">Command to be released.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.ReleaseAll">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.ReleaseAll``1">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+            <typeparam name="T">The type of the commands to be released.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.ReleaseAll(System.Type)">
+            <summary>
+            Releases all commands that are running.
+            </summary>
+            <param name="type">The type of the commands to be released.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.ReleaseAll(System.String)">
+            <summary>
+            Releases all commands with a given tag.
+            </summary>
+            <param name="strTag">Command tag.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.ContainsRegistration``1">
+            <summary>
+            Checks whether a given command of <typeparamref name="T"/> is registered.
+            </summary>
+            <typeparam name="T">Command type.</typeparam>
+            <returns><c>true</c>, if registration exists, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.ContainsRegistration(System.Type)">
+            <summary>
+            Checks whether a given command of <paramref name="type"/> is registered.
+            </summary>
+            <param name="type">Command type.</param>
+            <returns><c>true</c>, if registration exists, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.GetAllRegistrations">
+            <summary>
+            Gets all commands registered in the command dispatcher.
+            </summary>
+            <returns>All available registrations.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Starts acoroutine.
+            </summary>
+            <param name="routine">Routine.</param>
+            <returns>Created coroutine.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandDispatcher.StopCoroutine(UnityEngine.Coroutine)">
+            <summary>
+            Stops a coroutine.
+            </summary>
+            <param name="coroutine">Coroutine to be stopped.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.ICommandPool">
+            <summary>
+            Defines a command pool.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandPool.AddCommand(System.Type)">
+            <summary>
+            Adds a command of type <paramref name="type"/>.
+            
+            Commands are always added for late registration and pooling.
+            </summary>
+            <param name="type">The type of the command to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandPool.PoolCommand(System.Type)">
+            <summary>
+            Pools a command of a given type that was already added.
+            </summary>
+            <param name="commandType">Command type.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.ICommandPool.GetCommandFromPool(System.Type)">
+            <summary>
+            Gets a command from the pool.
+            </summary>
+            <param name="commandType">Command type.</param>
+            <returns>Command or NULL.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.Commander.Types.CommandReference">
+            <summary>
+            Represents a reference to a command that can be called by code
+            It's useful when used as a public property on MonoBehaviours.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Types.CommandReference.CommandNamespace">
+            <summary>The command namespace.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.Commander.Types.CommandReference.CommandName">
+            <summary>The command name.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.Commander.Types.CommandReference.DispatchCommand(System.Object[])">
+            <summary>
+            Dispatches the command.
+            </summary>
+            <param name="parameters">Command parameters.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.ContextRoot.ContextRoot">
+            <summary>
+            Context root MonoBehaviour.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.injectionType">
+            <summary>
+            Type of injection on MonoBehaviours
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.baseBehaviourTypeName">
+            <summary>
+            Name of the base behaviour type to perform scene injection
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.MonoBehaviourInjectionType">
+            <summary>
+            MonoBehaviour injection type.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.MonoBehaviourInjectionType.Manual">
+            <summary>
+            Manual injection
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.MonoBehaviourInjectionType.Children">
+            <summary>
+            Children injection
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.MonoBehaviourInjectionType.BaseType">
+            <summary>
+            base type injection
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.ContainersData">
+            <summary>Internal containers list that will be kept through scenes.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.Containers">
+            <summary>Containers list.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer``1">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <typeparam name="T">Container type.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer``1(System.Object)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="identifier">The container identifier.</param>
+            <typeparam name="T">Container type.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer``1(MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="resolutionMode">Instance resolution mode.</param>
+            <typeparam name="T">Container type.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer``1(System.Object,MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="identifier">The container identifier.</param>
+            <param name="resolutionMode">Instance resolution mode.</param>
+            <typeparam name="T">Container type.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="container">The container to be added.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer(MediaLab.Adic.Framework.Container.IInjectionContainer,System.Boolean)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="container">The container to be added.</param>
+            <param name="destroyOnLoad">
+            Indicates whether the container should be destroyed when a new scene is loaded.
+            </param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.SetupContainers">
+            <summary>
+            Setups injection containers.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.Init">
+            <summary>
+            Inits the game.
+            
+            The idea is to use this method to instantiate any containers and initialize the game.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.Awake">
+            <summary>
+            Awake is called for Unity when the script instance is being loaded.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.Start">
+            <summary>
+            Start is called on the frame for Unity when a script is enabled just before any of the Update methods is called the first time.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.OnDestroy">
+            <summary>
+            This function is called for Unity when the MonoBehaviour will be destroyed.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.AddContainer``1(System.Type[],System.Object[])">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="parameterTypes">Type of the constructor parameters.</param>
+            <param name="parameterValues">Construtor parameters values.</param>
+            <typeparam name="T">Container type.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.InitContainers">
+            <summary>
+            Initializes all containers.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.InjectionContainerData">
+            <summary>
+            Injection container data.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.InjectionContainerData.#ctor(MediaLab.Adic.Framework.Container.IInjectionContainer,System.Boolean)">
+            <summary>
+            Initializes a new instance of <see cref="T:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.InjectionContainerData"/>.
+            </summary>
+            <param name="container">The injection container.</param>
+            <param name="destroyOnLoad">Indicates whether the container should be destroyed on load.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.InjectionContainerData.Container">
+            <summary>The injection container.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.ContextRoot.ContextRoot.InjectionContainerData.DestroyOnLoad">
+            <summary>Indicates whether the container should be destroyed on load.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.ContextRoot.IContextRoot">
+            <summary>
+            Defines the context root.
+            
+            A context root is a simple entry point for container creation and game initialization.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.ContextRoot.IContextRoot.Containers">
+            <summary>Contexts list.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.IContextRoot.AddContainer``1">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <typeparam name="T">Container type.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.IContextRoot.AddContainer(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="container">The container to be added.</param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.IContextRoot.AddContainer(MediaLab.Adic.Framework.Container.IInjectionContainer,System.Boolean)">
+            <summary>
+            Adds the specified container.
+            </summary>
+            <param name="container">The container to be added.</param>
+            <param name="destroyOnLoad">
+            Indicates whether the container should be destroyed when a new scene is loaded.
+            </param>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.IContextRoot.SetupContainers">
+            <summary>
+            Setups the containers.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.IContextRoot.Init">
+            <summary>
+            Inits the game.
+            
+            The idea is to use this method to instantiate any containers and initialize the game.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.ContextRoot.SceneInjector">
+            <summary>
+            Scene injection helper class.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.SceneInjector.InjectOnChildren(System.Type)">
+            <summary>
+            Performs injection on all children of the current GameObject.
+            </summary>
+            <param name="baseType">Base type to perform injection.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.SceneInjector.InjectFromBaseType(System.Type)">
+            <summary>
+            Performs injection on all behaviours of a given <paramref name="baseType"/>.
+            </summary>
+            <param name="baseType">Base type to perform injection.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.ContextRoot.SceneInjector.Awake">
+            <summary>
+            Awake is called for Unity when the script instance is being loaded.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour">
+            <summary>
+            Trigger events on objects added by the Event Caller Container Extension.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.Extension">
+            <summary>Event Caller extension related to this behaviour.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.Update">
+            <summary>
+            Called once per frame.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.LateUpdate">
+            <summary>
+            Called once per frame after Update has finished.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.FixedUpdate">
+            <summary>
+            Called on a reliable time. Can be called more frequently than Update.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.OnApplicationFocus(System.Boolean)">
+            <summary>
+            Called when the application focus is changing.
+            </summary>
+            <param name="hasFocus">If set to <c>true</c> has focus.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.OnApplicationPause(System.Boolean)">
+            <summary>
+            Called when the application is pausing.
+            </summary>
+            <param name="isPaused">If set to <c>true</c> is paused.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.OnApplicationQuit">
+            <summary>
+            Called when the application is quitting.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerBehaviour.OnDestroy">
+            <summary>
+            Called when the component is destroyed.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension">
+            <summary>
+            Event caller container extension.
+            
+            Intercepts bindings and resolutions to check whether objects
+            should be added to receive update/dispose events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension"/> class.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Disposable">
+            <summary>The disposable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Updateable">
+            <summary>The updateable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.LateUpdateable">
+            <summary>The late updateable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.FixedUpdateable">
+            <summary>The fixed updateable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Focusable">
+            <summary>The focusable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Pausable">
+            <summary>The pausable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Quitable">
+            <summary>The quitable instances.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Behaviour">
+            <summary>The event caller behaviour.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.Init(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes the extension. Called after all extensions have been registered.
+            </summary>
+            <param name="container">The container into which the extension is registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.OnRegister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is registered on the container.
+            
+            When the method is called, subscribe to any events the container may provide.
+            </summary>
+            <param name="container">The container into which the extension is being registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.OnUnregister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is unregistered from the container.
+            
+            When the method is called, unsubscribe from any events on the container.
+            </summary>
+            <param name="container">The container from which the extension is being unregistered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.OnAfterAddBinding(MediaLab.Adic.Framework.Binding.IBinder,MediaLab.Adic.Framework.Binding.BindingInfo@)">
+            <summary>
+            handles the after add binding event.
+            
+            Used to check whether singleton instances should be added to the updater.
+            </summary>
+            <param name="source">Source.</param>
+            <param name="binding">Binding.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.OnBindingResolution(MediaLab.Adic.Framework.Injection.IInjector,MediaLab.Adic.Framework.Binding.BindingInfo@,System.Object@)">
+            <summary>
+            Handles the binding resolution event.
+            
+            Used to check whether the resolved instance should be added to the updater.
+            </summary>
+            <param name="source">Source.</param>
+            <param name="binding">Binding.</param>
+            <param name="instance">Instance.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.OnAfterRemoveBinding(MediaLab.Adic.Framework.Binding.IBinder,System.Type,System.Collections.Generic.IList{MediaLab.Adic.Framework.Binding.BindingInfo})">
+            <summary>
+            Handles the unbinding resolution event.
+            </summary>
+            <param name="source">Source.</param>
+            <param name="type">Type.</param>
+            <param name="bindings">Bindings.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.BindUnityExtension``1(System.Collections.Generic.List{``0},System.Object)">
+            <summary>
+            Binds the unity extension.
+            </summary>
+            <param name="instances">List of event instances.</param>
+            <param name="instance">Instance to be bound to.</param>
+            <typeparam name="T">Type of the instances.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.UnbindUnityExtension``1(System.Collections.Generic.List{``0},System.Object)">
+            <summary>
+            Unbinds the unity extension.
+            </summary>
+            <param name="instances">List of event instances.</param>
+            <param name="instance">Instance to be unbound to.</param>
+            <typeparam name="T">Type of the instances.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.EventCallerContainerExtension.CreateBehaviour(System.Object)">
+            <summary>
+            Create the EventCalledBehaviour. At any time there should be a single behaviour on the scene.
+            </summary>
+            <param name="containerId">Container ID.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.IFixedUpdatable">
+            <summary>
+            Allows an object that is binded on Adic to receive LateUpdate events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.IFixedUpdatable.FixedUpdate">
+            <summary>
+            Called on a reliable time. Can be called more frequently than Update.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.IFocusable">
+            <summary>
+            Allows an object that is binded on Adic to receive OnApplicationFocus events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.IFocusable.OnApplicationFocus(System.Boolean)">
+            <summary>
+            Called when the application focus is changing.
+            </summary>
+            <param name="hasFocus">If set to <c>true</c> has focus.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.ILateUpdatable">
+            <summary>
+            Allows an object that is binded on Adic to receive LateUpdate events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.ILateUpdatable.LateUpdate">
+            <summary>
+            Called once per frame after Update has finished.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.IPausable">
+            <summary>
+            Allows an object that is binded on Adic to receive OnApplicationPause events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.IPausable.OnApplicationPause(System.Boolean)">
+            <summary>
+            Called when the application is pausing.
+            </summary>
+            <param name="isPaused">If set to <c>true</c> is paused.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.IQuitable">
+            <summary>
+            Allows an object that is binded on Adic to receive OnApplicationQuit events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.IQuitable.OnApplicationQuit">
+            <summary>
+            Called when the application is quitting.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.EventCaller.IUpdatable">
+            <summary>
+            Allows an object that is binded on Adic to receive Update events.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.EventCaller.IUpdatable.Update">
+            <summary>
+            Called once per frame.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.InitializableCaller.IInitializable">
+            <summary>
+            Allows an object that is binded on Adic to be initialized after binding resolution
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.InitializableCaller.IInitializable.Init">
+            <summary>
+            Called for initializes instance after binding resolution
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.InitializableCaller.InitializableCallerContainerExtension">
+            <summary>
+            Initializable caller container extension.
+            Intercepts bindings and resolutions to check whether objects to be initialized after binding resolution
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.InitializableCaller.InitializableCallerContainerExtension.Init(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes the extension. Called after all extensions have been registered.
+            </summary>
+            <param name="container">The container into which the extension is registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.InitializableCaller.InitializableCallerContainerExtension.OnRegister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is registered on the container.
+            
+            When the method is called, subscribe to any events the container may provide.
+            </summary>
+            <param name="container">The container into which the extension is being registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.InitializableCaller.InitializableCallerContainerExtension.OnUnregister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is unregistered from the container.
+            
+            When the method is called, unsubscribe from any events on the container.
+            </summary>
+            <param name="container">The container from which the extension is being unregistered.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.MonoInjection.InjectFromContainer">
+            <summary>
+            Marks a <see cref="T:UnityEngine.MonoBehaviour"/> to be injected only from a container
+            with a given identifier.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.MonoInjection.InjectFromContainer.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.MonoInjection.InjectFromContainer"/> class.
+            </summary>
+            <param name="identifier">The identifier of the container from which injections will occur.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.MonoInjection.InjectFromContainer.Identifier">
+            <summary>The identifier of the container from which injections will occur.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.MonoInjection.InjectionUtil">
+            <summary>
+            Injection utils.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.MonoInjection.InjectionUtil.Inject(System.Object)">
+            <summary>
+            Injects into a specified object using container details.
+            </summary>
+            <param name="obj">Target object of the injection.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.MonoInjection.InjectionUtil.Inject(System.Object,System.Object)">
+            <summary>
+            Does dependency injection on a script from a container with a given identifier.
+            </summary>
+            <param name="obj">Target object of the injection.</param>
+            <param name="identifier">Container identifier. If empty, no container restrictions are applied.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.MonoInjection.InjectionUtil.IsSingletonOnContainer(System.Object,MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Determines if the object is a singleton in a given container.
+            </summary>
+            <param name="obj">Target object to check.</param>
+            <param name="container">Container to check for bindings.</param>
+            <returns><c>true</c> if is singleton on container the specified obj container; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.MonoInjection.MonoInjectionExtension">
+            <summary>
+            Provides an Inject method to <see cref="T:UnityEngine.MonoBehaviour"/>.
+            
+            It assumes that the ContextRoot Extension is in use.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.MonoInjection.MonoInjectionExtension.Inject(UnityEngine.MonoBehaviour)">
+            <summary>
+            Does dependency injection on a MonoBehaviour.
+            </summary>
+            <param name="script">Target script of the injection.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.UnityBinding.PrefabBinding">
+            <summary>
+            Represents a prefab binding.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.PrefabBinding.#ctor(UnityEngine.Object,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.UnityBinding.PrefabBinding"/> class.
+            </summary>
+            <param name="prefab">The prefab to be instantiated.</param>
+            <param name="type">The type that will be resolved from the prefab.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.UnityBinding.PrefabBinding.Prefab">
+            <summary>The prefab to be instantiated.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Extensions.UnityBinding.PrefabBinding.Type">
+            <summary>The type that will be resolved from the prefab.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory">
+            <summary>
+            Binding condition factory for Unity bindings. It uses the original binding and adds another actions to it.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.bindingConditionFactory">
+            <summary>Original binding condition factory.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.objectName">
+            <summary>Related Unity Object name.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.#ctor(MediaLab.Adic.Framework.Binding.IBindingConditionFactory,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory"/> class.
+            </summary>
+            <param name="bindingConditionFactory">Original binding condition factory.</param>
+            <param name="objectName">Related Unity Object name.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.Bind``1">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.Bind(System.Type)">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <param name="type">The type to bind to.</param>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.As(System.Object)">
+            <summary>
+            Conditions the binding to be injected through an identifier.
+            </summary>
+            <param name="identifier">Identifier of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.AsObjectName">
+            <summary>
+            Conditions the binding to be injected through an identifier defined by the name of the related Unity Object.
+            </summary>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.When(MediaLab.Adic.Framework.Binding.BindingCondition)">
+            <summary>
+            Conditions the binding to be injected only if BindingConditionEvaluator returns true.
+            </summary>
+            <param name="condition">Condition.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.WhenInto``1">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type.
+            </summary>
+            <typeparam name="T">The enclosing type.</typeparam>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.WhenInto(System.Type)">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <paramref name="type"/>.
+            </summary>
+            <param name="type">The enclosing type.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.WhenIntoInstance(System.Object)">
+            <summary>
+            Conditions the binding to be injected only when into a certain <paramref name="instance"/>.
+            </summary>
+            <param name="instance">The enclosing instance.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingConditionFactory.Tag(System.String[])">
+            <summary>
+            Adds tags to the binding.
+            </summary>
+            <param name="tags">Tags of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.UnityBinding.UnityBindingContainerExtension">
+            <summary>
+            Container extension for the Unity Binding Adic Extension.
+            
+            Ensures that the resolution of transient prefabs instantiates them.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingContainerExtension.Init(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes the extension. Called after all extensions have been registered.
+            </summary>
+            <param name="container">The container into which the extension is registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingContainerExtension.OnRegister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is registered on the container.
+            
+            When the method is called, subscribe to any events the container may provide.
+            </summary>
+            <param name="container">The container into which the extension is being registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingContainerExtension.OnUnregister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is unregistered from the container.
+            
+            When the method is called, unsubscribe from any events on the container.
+            </summary>
+            <param name="container">The container from which the extension is being unregistered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingContainerExtension.OnBeforeAddBinding(MediaLab.Adic.Framework.Binding.IBinder,MediaLab.Adic.Framework.Binding.BindingInfo@)">
+            <summary>
+            Handles the before add binding container event.
+            
+            Used to ensure the binding value is a <see cref="T:UnityEngine.MonoBehaviour"/>.
+            </summary>
+            <param name="source">Source.</param>
+            <param name="binding">Binding.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingContainerExtension.OnBindingEvaluation(MediaLab.Adic.Framework.Injection.IInjector,MediaLab.Adic.Framework.Binding.BindingInfo@)">
+            <summary>
+            Handles the binding evaluation container event.
+            
+            Used to instantiate prefabs.
+            </summary>
+            <param name="source">Source.</param>
+            <param name="binding">Binding.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension">
+            <summary>
+            Provides binding capabilities to Unity entities in <see cref="T:MediaLab.Adic.Framework.Container.IInjectionContainer"/>.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject(MediaLab.Adic.Framework.Binding.IBindingFactory)">
+            <summary>
+            Binds the key type to a singleton of itself on a new GameObject.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject``1(MediaLab.Adic.Framework.Binding.IBindingFactory)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on a new GameObject.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <typeparam name="T">The component type to bind the GameObject to.</typeparam>
+            <param name="bindingFactory">The original binding factory.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <paramref name="type"/> on a new GameObject.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of itself on a GameObject of a given <paramref name="name"/>.
+            
+            If the GameObject of a given <paramref name="name"/> is not found, it's added to the scene.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">The GameObject name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject``1(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on a GameObject of a given <paramref name="name"/>.
+            
+            If the GameObject of a given <paramref name="name"/> is not found, it's added to the scene.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">The GameObject name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,System.String)">
+            <summary>
+            Binds the key type to a singleton <paramref name="type"/> on a GameObject 
+            of a given <paramref name="name"/>.
+            
+            If the GameObject of a given <paramref name="name"/> is not found, it's added to the scene.
+            
+            If <paramref name="type"/> is <see cref="T:UnityEngine.GameObject"/>, binds the
+            key to the GameObject itself.
+            
+            If <paramref name="type"/> is see cref="UnityEngine.Component"/>, binds the key
+            to the the instance of the component.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="name">The GameObject name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/> on a given <paramref name="gameObject"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="gameObject">The GameObject object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject``1(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on a given <paramref name="gameObject"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="gameObject">The GameObject object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObject(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a singleton <paramref name="type"/> to a given <paramref name="gameObject"/>.
+            
+            If <paramref name="type"/> is <see cref="T:UnityEngine.GameObject"/>, binds the
+            key to the GameObject itself.
+            
+            If <paramref name="type"/> is see cref="UnityEngine.Component"/>, binds the key
+            to the the instance of the component.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="gameObject">The GameObject object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObjectWithTag(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of itself on a GameObject of a given <paramref name="tag"/>.
+            
+            If more than one object is returned, just the first one will be binded.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="tag">The GameObject tag.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObjectWithTag``1(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on a GameObject with a given <paramref name="tag"/>.
+            
+            If more than one object is returned, just the first one will be binded.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="tag">The GameObject tag.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObjectWithTag(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,System.String)">
+            <summary>
+            Binds the key type to a singleton  <paramref name="type"/> on a GameObject 
+            with a given <paramref name="tag"/>.
+            
+            If more than one object is returned, just the first one will be binded.
+            
+            If <paramref name="type"/> is <see cref="T:UnityEngine.GameObject"/>, binds the
+            key to the GameObject itself.
+            
+            If <paramref name="type"/> is see cref="UnityEngine.Component"/>, binds the key
+            to the the instance of the component.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="tag">The GameObject tag.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObjectsWithTag(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to singletons <see cref="T:UnityEngine.Component"/>
+            of itself on game objects of a given <paramref name="tag"/>.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="tag">The GameObject tag.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObjectsWithTag``1(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to singletons <see cref="T:UnityEngine.Component"/>
+            of itself on game objects of a given <paramref name="tag"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="tag">The GameObject tag.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToGameObjectsWithTag(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,System.String)">
+            <summary>
+            Binds the key type to singletons <see cref="T:UnityEngine.Component"/>
+            of itself on game objects of a given <paramref name="tag"/>.
+            
+            If <paramref name="type"/> is <see cref="T:UnityEngine.GameObject"/>, binds the
+            key to the GameObject itself.
+            
+            If <paramref name="type"/> is see cref="UnityEngine.Component"/>, binds the key
+            to the the instance of the component.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the GameObject, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to game objects that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="tag">The GameObject tag.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefab(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a transient of itself on the prefab.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            Every resolution of a transient prefab will generate a new instance. So, even
+            if the component resolved from the prefab is destroyed, it won't generate any
+            missing references in the container.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="prefab">Prefab object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefab``1(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a transient <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on the prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            Every resolution of a transient prefab will generate a new instance. So, even
+            if the component resolved from the prefab is destroyed, it won't generate any
+            missing references in the container.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="prefab">Prefab object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefab(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a transient <see cref="T:UnityEngine.Component"/>
+            of <paramref name="type"/> on the prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            Every resolution of a transient prefab will generate a new instance. So, even
+            if the component resolved from the prefab is destroyed, it won't generate any
+            missing references in the container.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="prefab">Prefab object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefabSingleton(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a singleton of itself on a newly instantiated prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to prefabs that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="prefab">Prefab object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefabSingleton``1(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on a newly instantiated prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to prefabs that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="prefab">Prefab object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefabSingleton(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,UnityEngine.GameObject)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <paramref name="type"/> on a newly instantiated prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to prefabs that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="prefab">Prefab object.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefab(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a transient of itself on the prefab.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            Every resolution of a transient prefab will generate a new instance. So, even
+            if the component resolved from the prefab is destroyed, it won't generate any
+            missing references in the container.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">Prefab name. It will be loaded using Resources.Load.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefab``1(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a transient <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on the prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            Every resolution of a transient prefab will generate a new instance. So, even
+            if the component resolved from the prefab is destroyed, it won't generate any
+            missing references in the container.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">Prefab name. It will be loaded using Resources.Load.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefab(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,System.String)">
+            <summary>
+            Binds the key type to a transient <see cref="T:UnityEngine.Component"/>
+            of <paramref name="type"/> on the prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            Every resolution of a transient prefab will generate a new instance. So, even
+            if the component resolved from the prefab is destroyed, it won't generate any
+            missing references in the container.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="name">Prefab name. It will be loaded using Resources.Load</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefabSingleton(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton of itself on a newly instantiated prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            
+            The key type must be derived either from <see cref="T:UnityEngine.GameObject"/>
+            or <see cref="T:UnityEngine.Component"/>.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to prefabs that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">Prefab name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefabSingleton``1(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <typeparamref name="T"/> on a newly instantiated prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to prefabs that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">Prefab name. It will be loaded using Resources.Load.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToPrefabSingleton(MediaLab.Adic.Framework.Binding.IBindingFactory,System.Type,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Component"/>
+            of <paramref name="type"/> on a newly instantiated prefab.
+            
+            If the <see cref="T:UnityEngine.Component"/> is not found on the prefab
+            at the moment of the instantiation, it will be added.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to prefabs that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="type">The component type.</param>
+            <param name="name">Prefab name. It will be loaded using Resources.Load.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.ToResource(MediaLab.Adic.Framework.Binding.IBindingFactory,System.String)">
+            <summary>
+            Binds the key type to a singleton <see cref="T:UnityEngine.Object"/> loaded
+            from the Resources folder.
+            </summary>
+            <remarks>
+            To prevent references to destroyed objects, only bind to resources that won't 
+            be destroyed in the scene.
+            </remarks>
+            <param name="bindingFactory">The original binding factory.</param>
+            <param name="name">Resource name. It will be loaded using Resources.Load.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Extensions.UnityBinding.UnityBindingExtension.CreateSingletonBinding(MediaLab.Adic.Framework.Binding.IBindingFactory,UnityEngine.GameObject,System.Type,System.Boolean)">
+            <summary>
+            Creates a singleton binding.
+            </summary>
+            <param name="bindingFactory">The binding factory.</param>
+            <param name="gameObject">The GameObject to bind to.</param>
+            <param name="type">The type of the binding.</param>
+            <param name="typeIsGameObject">Indicates whether the type is a GameObject.</param>
+            <returns>The binding condition object related to the binding.</returns>
+        </member>
+    </members>
+</doc>

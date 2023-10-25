@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &843378977301810089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924002794471620212, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139651456354071450, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: field of view
+      value: 157.38014
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139651456354071450, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139651456354071450, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139651456354071450, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950104507050076480, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraOffAxisProjection
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0615bad25f2c7c44c8f4a89358b422d4, type: 3}
+--- !u!1 &7340930457177481961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7950104507050076480, guid: 0615bad25f2c7c44c8f4a89358b422d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 843378977301810089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2159485929845360533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340930457177481961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5017685a9e6f48747a322e9f162acd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewportPosition: {x: 0, y: 0, z: 0.01}
+  viewportRotation: {x: 0, y: 0, z: 0}
+  nearClipPlane: 0.3
+  setNearClipPlane: 0
+  pointOfView: {x: 0, y: 0, z: 0}
+  useFixedAspectRatio: 1
+  aspectWidth: 3
+  aspectHeight: 3
+  useAspectAsViewportSize: 1
+--- !u!114 &6040939161215672160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7340930457177481961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c65ab2a8a54524880edfa5696b8c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCaveCamera: 0

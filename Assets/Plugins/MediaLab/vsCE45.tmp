@@ -1,0 +1,2378 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MediaLab.Adic.Framework</name>
+    </assembly>
+    <members>
+        <member name="T:MediaLab.Adic.Framework.Attributes.Construct">
+            <summary>
+            Marks a preferable constructor.
+            </summary>
+            <remarks>
+            If no constructor is marked as preferable, the shortest available will be used.
+            </remarks>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Attributes.Inject">
+            <summary>
+            Marks a setter injection point.
+            
+            If an identifier is provided, the injector looks the binder for a key with the given name.
+            
+            If no identifier is provided, the injector looks the binder for a key of the type of the field/property.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Attributes.Inject.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Attributes.Inject"/> class.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Attributes.Inject.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Attributes.Inject"/> class.
+            </summary>
+            <param name="identifier">The identifier of the binding to inject.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Attributes.Inject.Identifier">
+            <summary>The identifier of the binding to inject.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Attributes.PostConstruct">
+            <summary>
+            Marks a method to be called immediately after injection.
+            </summary>
+            <remarks>
+            Can be used as a constructor, but with the certainty that all the dependencies have been injected.
+            </remarks>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.Binder">
+            <summary>
+            Binds a type to another type or an instance.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.Binder.typeBindings">
+            <summary>Type bindings of the binder.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.Binder.CanRemoveBindingHandler">
+            <summary>
+            Checks whether a binding can be removed.
+            </summary>
+            <param name="binding">Binding to be evaluated.</param>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.Binder.BeforeAddBinding">
+            <summary>Occurs before a binding is added.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.Binder.AfterAddBinding">
+            <summary>Occurs after a binding is added.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.Binder.BeforeRemoveBinding">
+            <summary>Occurs before a binding is removed.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.Binder.AfterRemoveBinding">
+            <summary>Occurs after a binding is removed.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.Bind``1">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.Bind(System.Type)">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <param name="type">The type to bind to.</param>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.AddBinding(MediaLab.Adic.Framework.Binding.BindingInfo)">
+            <summary>
+            Adds a binding.
+            </summary>
+            <param name="binding">The binding to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.GetBindings">
+            <summary>
+            Gets all bindings.
+            </summary>
+            <returns>Bindings list.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.GetBindingsFor``1">
+            <summary>
+            Gets the bindings for a certain <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to get the bindings from.</typeparam>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.GetBindingsFor(System.Type)">
+            <summary>
+            Gets the bindings for a certain specified type.
+            </summary>
+            <param name="type">The type to get the bindings from.</param>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.GetBindingsFor(System.Object)">
+            <summary>
+            Gets the bindings for a given specified identifier".
+            </summary>
+            <param name="identifier">The identifier to get the bindings from.</param>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.GetBindingsTo``1">
+            <summary>
+            Gets the bindings to a given <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to get the bindings from.</typeparam>
+            <returns>The bindings to the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.GetBindingsTo(System.Type)">
+            <summary>
+            Gets the bindings to a given type.
+            </summary>
+            <param name="type">The type to get the bindings from.</param>
+            <returns>The bindings to the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.ContainsBindingFor``1">
+            <summary>
+            Checks whether this binder contains a binding for a given <typeparamref name="T"/>.
+            </summary>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.ContainsBindingFor(System.Type)">
+            <summary>
+            Checks whether this binder contains a binding for a given <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to be checked.</param>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.ContainsBindingFor(System.Object)">
+            <summary>
+            Checks whether this binder contains a binding for a given <paramref name="identifier"/>.
+            </summary>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.Unbind``1">
+            <summary>
+            Unbinds any bindings to a certain <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to be unbound.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.Unbind(System.Type)">
+            <summary>
+            Unbinds any bindings to a certain <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to be unbound.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.Unbind(System.Object)">
+            <summary>
+            Unbinds any bindings to a certain <paramref name="identifier"/>.
+            </summary>
+            <param name="identifier">The identifier to be unbound.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.UnbindInstance(System.Object)">
+            <summary>
+            Unbinds any bindings that holds the given instance, either as a value or on conditions.
+            </summary>
+            <param name="instance">Instance.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.UnbindByTag(System.String)">
+            <summary>
+            Unbinds any bindings that contains the given tag.
+            </summary>
+            <param name="tag">Tag value.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.AddBindingToDictionary(MediaLab.Adic.Framework.Binding.BindingInfo)">
+            <summary>
+            Adds the binding to the internal dictionary.
+            </summary>
+            <param name="binding">The binding to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.Unbind(MediaLab.Adic.Framework.Binding.Binder.CanRemoveBindingHandler)">
+            <summary>
+            Unbinds bindings using a given condition.
+            </summary>
+            <param name="canRemoveBinding">Condition to check for bindings removal.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.Binder.BindingFactoryProvider(System.Type)">
+            <summary>
+            Resolves the binding provider.
+            </summary>
+            <param name="type">The type being bound.</param>
+            <returns>The binding provider.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.BindingCondition">
+            <summary>
+            Binding condition evaluator handler.
+            </summary>
+            <param name="context">The injection context.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.BindingAddedHandler">
+            <summary>
+            Binding added handler.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="binding">The binding to be added, by reference.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.BindingRemovedHandler">
+            <summary>
+            Binding removed handler.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="type">The type of the binding being removed.</param>
+            <param name="bindings">The bindings being removed.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.BindingFactory">
+            <summary>
+            Binding types to another types or instances.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.#ctor(System.Type,MediaLab.Adic.Framework.Binding.IBinder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Binding.BindingFactory"/> class.
+            </summary>
+            <param name="bindingType">The type being bound.</param>
+            <param name="binder">The binder that will bind this binding.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingFactory.Binder">
+            <summary>Binder used by the Binding Factory.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingFactory.BindingType">
+            <summary>The type being bound.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToSelf">
+            <summary>
+            Binds the key type to a transient of itself. The key must be a class.
+            </summary>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToSingleton">
+            <summary>
+            Binds the key type to a singleton of itself. The key must be a class.
+            </summary>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToSingleton``1">
+            <summary>
+            Binds the key type to a singleton of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The related type.</typeparam>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToSingleton(System.Type)">
+            <summary>
+            Binds the key type to a singleton of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The related type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.To``1">
+            <summary>
+            Binds the key type to a transient of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.To(System.Type)">
+            <summary>
+            Binds the key type to a transient of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The related type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.To``1(``0)">
+            <summary>
+            Binds the key type to an <paramref name="instance"/>.
+            </summary>
+            <typeparam name="T">The related type.</typeparam>
+            <param name="instance">The instance to bind the type to.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.To(System.Type,System.Object)">
+            <summary>
+            Binds the key type to an <paramref name="instance"/>.
+            </summary>
+            <param name="type">The related type.</param>
+            <param name="instance">The instance to bind the type to.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToNamespace(System.String)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/> 
+            as transient bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToNamespace(System.String,System.Boolean)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/> 
+            as transient bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="includeChildren">Indicates whether children namespaces should be included.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToNamespaceSingleton(System.String)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/>
+            as singleton bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToNamespaceSingleton(System.String,System.Boolean)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/>
+            as singleton bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="includeChildren">Indicates whether children namespaces should be included.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToFactory``1">
+            <summary>
+            Binds the key type to a <typeparamref name="T"/> factory.
+            </summary>
+            <typeparam name="T">The factory type.</typeparam>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToFactory(System.Type)">
+            <summary>
+            Binds the key type to a factory of a certain <paramref name="type"/>.
+            </summary>
+            <param name="type">The factory type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToFactory(MediaLab.Adic.Framework.Types.IFactory)">
+            <summary>
+            Binds the key type to a <paramref name="factory"/>.
+            </summary>
+            <param name="factory">Factory to be bound to.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.AddBinding(System.Object,MediaLab.Adic.Framework.Binding.BindingInstance)">
+            <summary>
+            Adds a binding.
+            </summary>
+            <param name="value">Binding value.</param>
+            <param name="instanceType">Binding instance type.</param>
+            <returns>The binding condition factory.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.ToNamespace(System.String,MediaLab.Adic.Framework.Binding.BindingInstance,System.Boolean)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/>
+            as singleton bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="bindingInstance">Binding instance type.</param>.
+            <param name="includeChildren">Indicates whether child namespaces should be included.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.CreateBindingConditionFactoryProvider(MediaLab.Adic.Framework.Binding.BindingInfo)">
+            <summary>
+            Resolves the binding provider.
+            </summary>
+            <param name="binding">Informatiion about the binding.</param>
+            <returns>The binding provider.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingFactory.CreateBindingConditionFactoryProvider(MediaLab.Adic.Framework.Binding.IBindingConditionFactory[])">
+            <summary>
+            Resolves the binding provider.
+            </summary>
+            <param name="bindingConditionFactories">Binding factories.</param>
+            <returns>The binding provider.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.BindingInfo">
+            <summary>
+            Represents a binding.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.BindingInfo.originalBinding">
+            <summary>
+            Original binding from which this one is derived. 
+            <para />
+            Used in cases when a singleton binding needs to be created from another binding.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.BindingInfo.bindingTags">
+            <summary>Binding tags.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingInfo.#ctor(System.Type,System.Object,MediaLab.Adic.Framework.Binding.BindingInstance)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Binding.BindingInfo"/> class.
+            </summary>
+            <param name="type">Type from which the binding is bound to.</param>
+            <param name="value">Value to which the binding is bound to.</param>
+            <param name="instanceType">Binding instance type.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingInfo.#ctor(System.Type,System.Object,MediaLab.Adic.Framework.Binding.BindingInstance,MediaLab.Adic.Framework.Binding.BindingInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Binding.BindingInfo"/> class.
+            </summary>
+            <param name="type">Type from which the binding is bound to.</param>
+            <param name="value">Value to which the binding is bound to.</param>
+            <param name="instanceType">Binding instance type.</param>
+            <param name="originalBinding">Original binding.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingInfo.Type">
+            <summary>Type from which the binding is bound to.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingInfo.Value">
+            <summary>Value to which the binding is bound to.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingInfo.InstanceType">
+            <summary>Binding instance type.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingInfo.Identifier">
+            <summary>Binding identifier. The identifier will group bindings of the same type.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingInfo.Condition">
+            <summary>Binding condition.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.BindingInfo.Tags">
+            <summary>Binding tags.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingInfo.GetValueType">
+            <summary>
+            Gets the type of the value.
+            </summary>
+            <returns>The value type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.BindingInfo.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:MediaLab.Adic.Framework.Binding.BindingInfo"/>.
+            </summary>
+            <returns>This object to string.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.BindingInstance">
+            <summary>
+            Binding instance type.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.BindingInstance.Transient">
+            <summary>A new instance is given during dependency resolution.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.BindingInstance.Singleton">
+            <summary>The same instance is given during dependency resolution.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.BindingInstance.Factory">
+            <summary>The instance is requested through a factory during resolution.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.IBinder">
+            <summary>
+            Defines a binder that binds a type to another type or instance.
+            </summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.IBinder.BeforeAddBinding">
+            <summary>Occurs before a binding is added.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.IBinder.AfterAddBinding">
+            <summary>Occurs after a binding is added.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.IBinder.BeforeRemoveBinding">
+            <summary>Occurs before a binding is removed.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Binding.IBinder.AfterRemoveBinding">
+            <summary>Occurs after a binding is removed.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.AddBinding(MediaLab.Adic.Framework.Binding.BindingInfo)">
+            <summary>
+            Adds a binding.
+            </summary>
+            <param name="binding">The binding to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.GetBindings">
+            <summary>
+            Gets all bindings.
+            </summary>
+            <returns>Bindings list.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.GetBindingsFor``1">
+            <summary>
+            Gets the bindings for a given <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to get the bindings from.</typeparam>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.GetBindingsFor(System.Type)">
+            <summary>
+            Gets the bindings for a given type.
+            </summary>
+            <param name="type">The type to get the bindings from.</param>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.GetBindingsFor(System.Object)">
+            <summary>
+            Gets the bindings for a given identifier.
+            </summary>
+            <param name="identifier">The identifier to get the bindings from.</param>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.GetBindingsTo``1">
+            <summary>
+            Gets the bindings to a given <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to get the bindings from.</typeparam>
+            <returns>The bindings to the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.GetBindingsTo(System.Type)">
+            <summary>
+            Gets the bindings to a given type/>
+            </summary>
+            <param name="type">The type to get the bindings from.</param>
+            <returns>The bindings to the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.ContainsBindingFor``1">
+            <summary>
+            Checks whether this binder contains a binding for a given <typeparamref name="T"/>.
+            </summary>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.ContainsBindingFor(System.Type)">
+            <summary>
+            Checks whether this binder contains a binding for a given <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to be checked.</param>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.ContainsBindingFor(System.Object)">
+            <summary>
+            Checks whether this binder contains a binding for a given <paramref name="identifier"/>.
+            </summary>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.Unbind``1">
+            <summary>
+            Unbinds any bindings to a certain <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to be unbound.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.Unbind(System.Type)">
+            <summary>
+            Unbinds any bindings to a certain <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to be unbound.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.Unbind(System.Object)">
+            <summary>
+            Unbinds any bindings to a certain <paramref name="identifier"/>.
+            </summary>
+            <param name="identifier">The identifier to be unbound.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.UnbindInstance(System.Object)">
+            <summary>
+            Unbinds any bindings that holds the given instance, either as a value or on conditions.
+            </summary>
+            <param name="instance">Instance.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBinder.UnbindByTag(System.String)">
+            <summary>
+            Unbinds any bindings that contains the given tag.
+            </summary>
+            <param name="tag">Tag value.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.IBindingConditionFactory">
+            <summary>
+            Defines the conditions of a binding.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingConditionFactory.As(System.Object)">
+            <summary>
+            Conditions the binding to be injected through an identifier.
+            </summary>
+            <param name="identifier">Identifier of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingConditionFactory.When(MediaLab.Adic.Framework.Binding.BindingCondition)">
+            <summary>
+            Conditions the binding to be injected only if BindingConditionEvaluator returns true.
+            </summary>
+            <param name="condition">Condition.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingConditionFactory.WhenInto``1">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The enclosing type.</typeparam>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingConditionFactory.WhenInto(System.Type)">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <paramref name="type"/>.
+            </summary>
+            <param name="type">The enclosing type.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingConditionFactory.WhenIntoInstance(System.Object)">
+            <summary>
+            Conditions the binding to be injected only when into a certain <paramref name="instance"/>.
+            </summary>
+            <param name="instance">The enclosing instance.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingConditionFactory.Tag(System.String[])">
+            <summary>
+            Adds tags to the binding.
+            </summary>
+            <param name="tags">Tags of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.IBindingCreator">
+            <summary>
+            Defines a bindind creator.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingCreator.Bind``1">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingCreator.Bind(System.Type)">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <param name="type">The type to bind to.</param>
+            <returns>The binding.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.IBindingFactory">
+            <summary>
+            Defines a binding factory.
+            
+            The binding factory also provides binding capabilities for chaining.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.IBindingFactory.Binder">
+            <summary>Binder used by the Binding Factory.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Binding.IBindingFactory.BindingType">
+            <summary>The type being bound.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToSelf">
+            <summary>
+            Binds the key type to a transient of itself. The key must be a class. 
+            </summary>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToSingleton">
+            <summary>
+            Binds the key type to a singleton of itself. The key must be a class.
+            </summary>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToSingleton``1">
+            <summary>
+            Binds the key type to a singleton of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The related type.</typeparam>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToSingleton(System.Type)">
+            <summary>
+            Binds the key type to a singleton of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The related type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.To``1">
+            <summary>
+            Binds the key type to a transient of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.To(System.Type)">
+            <summary>
+            Binds the key type to a transient of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The related type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.To``1(``0)">
+            <summary>
+            Binds the key type to an <paramref name="instance"/>.
+            </summary>
+            <typeparam name="T">The related type.</typeparam>
+            <param name="instance">The instance to bind the type to.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.To(System.Type,System.Object)">
+            <summary>
+            Binds the key type to an <paramref name="instance"/>.
+            </summary>
+            <param name="type">The related type.</param>
+            <param name="instance">The instance to bind the type to.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToNamespace(System.String)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/> 
+            as transient bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToNamespace(System.String,System.Boolean)">
+            <summary>
+            Binds the key type to all assignable types in a given <paramref name="namespaceName"/> 
+            as transient bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="includeChildren">Indicates whether child namespaces should be included.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToNamespaceSingleton(System.String)">
+            <summary>
+            Binds the key to all assignable types in a given <paramref name="namespaceName"/>
+            as singleton bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToNamespaceSingleton(System.String,System.Boolean)">
+            <summary>
+            Binds the key to all assignable types in a given <paramref name="namespaceName"/>
+            as singleton bindings.
+            </summary>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="includeChildren">Indicates whether child namespaces should be included.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToFactory``1">
+            <summary>
+            Binds the key type to a <typeparamref name="T"/> factory.
+            </summary>
+            <typeparam name="T">The factory type.</typeparam>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToFactory(System.Type)">
+            <summary>
+            Binds the key type to a factory of a certain <paramref name="type"/>.
+            </summary>
+            <param name="type">The factory type.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.ToFactory(MediaLab.Adic.Framework.Types.IFactory)">
+            <summary>
+            Binds the key type to a <paramref name="factory"/>.
+            </summary>
+            <param name="factory">Factory to be bound to.</param>
+            <returns>The binding condition object related to this binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.IBindingFactory.AddBinding(System.Object,MediaLab.Adic.Framework.Binding.BindingInstance)">
+            <summary>
+            Creates a binding.
+            </summary>
+            <returns>The binding.</returns>
+            <param name="value">Binding value.</param>
+            <param name="instanceType">Binding instance type.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory">
+            <summary>
+            Binding condition factory for multiple binding factories.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.bindingConditionFactories">
+            <summary>Binding factories.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.bindingCreator">
+            <summary>Binding creator. Used for chaining.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.#ctor(MediaLab.Adic.Framework.Binding.IBindingConditionFactory[],MediaLab.Adic.Framework.Binding.IBindingCreator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory"/> class.
+            </summary>
+            <param name="bindingConditionFactories">Binding factories.</param>
+            <param name="bindingCreator">Binding creator</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.As(System.Object)">
+            <summary>
+            Conditions the binding to be injected through an identifier.
+            </summary>
+            <param name="identifier">Identifier of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.When(MediaLab.Adic.Framework.Binding.BindingCondition)">
+            <summary>
+            Conditions the binding to be injected only if BindingConditionEvaluator returns true.
+            </summary>
+            <param name="condition">Condition.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.WhenInto``1">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The enclosing type.</typeparam>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.WhenInto(System.Type)">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <paramref name="type"/>.
+            </summary>
+            <param name="type">The enclosing type.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.WhenIntoInstance(System.Object)">
+            <summary>
+            Conditions the binding to be injected only when into a certain <paramref name="instance"/>.
+            </summary>
+            <param name="instance">The enclosing instance.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.Tag(System.String[])">
+            <summary>
+            Adds tags to the binding.
+            </summary>
+            <param name="tags">Tags of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.Bind``1">
+            <summary>
+            Binds a type to another type or instance. Used for chaining.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.MultipleBindingConditionFactory.Bind(System.Type)">
+            <summary>
+            Binds a type to another type or instance. Used for chaining.
+            </summary>
+            <param name="type">The type to bind to.</param>
+            <returns>The binding.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory">
+            <summary>
+            Binding condition factory for a single binding.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.binding">
+            <summary>Binding to have its conditions defined.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.bindingCreator">
+            <summary>Binding creator. Used for chaining.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.#ctor(MediaLab.Adic.Framework.Binding.BindingInfo,MediaLab.Adic.Framework.Binding.IBindingCreator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory"/> class.
+            </summary>
+            <param name="binding">The binding to have its conditions settled.</param>
+            <param name="bindingCreator">Binding creator. Used for chaining.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.As(System.Object)">
+            <summary>
+            Conditions the binding to be injected through an identifier.
+            </summary>
+            <param name="identifier">Identifier of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.When(MediaLab.Adic.Framework.Binding.BindingCondition)">
+            <summary>
+            Conditions the binding to be injected only if BindingConditionEvaluator returns true.
+            </summary>
+            <param name="condition">Condition.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.WhenInto``1">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The enclosing type.</typeparam>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.WhenInto(System.Type)">
+            <summary>
+            Conditions the binding to be injected only when into an object of a certain type <paramref name="type"/>.
+            </summary>
+            <param name="type">The enclosing type.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.WhenIntoInstance(System.Object)">
+            <summary>
+            Conditions the binding to be injected only when into a certain <paramref name="instance"/>.
+            </summary>
+            <param name="instance">The enclosing instance.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.Tag(System.String[])">
+            <summary>
+            Adds tags to the binding.
+            <para />
+            Subsequent calls to the Tag method will replace old tags.
+            </summary>
+            <param name="tags">Tags of the binding.</param>
+            <returns>The current binding condition.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.Bind``1">
+            <summary>
+            Binds a type to another type or instance. Used for chaining.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Binding.SingleBindingConditionFactory.Bind(System.Type)">
+            <summary>
+            Binds a type to another type or instance. Used for chaining.
+            </summary>
+            <param name="type">The type to bind to.</param>
+            <returns>The binding.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.AcessorInfo">
+            <summary>
+            Acessor (fields and properties) info.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.AcessorInfo.#ctor(System.Type,System.String,System.Object,MediaLab.Adic.Framework.Util.GetterCall,MediaLab.Adic.Framework.Util.SetterCall)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Cache.AcessorInfo"/> class.
+            </summary>
+            <param name="type">Setter type.</param>
+            <param name="name">Parameter name.</param>
+            <param name="identifier">Resolution identifier.</param>
+            <param name="getter">Getter method.</param>
+            <param name="setter">Setter method.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.AcessorInfo.Getter">
+            <summary>Getter method.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.AcessorInfo.Setter">
+            <summary>Setter method.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.IReflectionCache">
+            <summary>
+            Defines a cache for reflection data.
+            
+            The idea of this cache is to reduce the execution of reflection by caching data about types.
+            
+            The cache should always look for constructors and Inject attributes.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.IReflectionCache.ReflectionFactory">
+            <summary>Reflection factory used to generate items on the cache.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.IReflectionCache.Item(System.Type)">
+            <summary>Gets the <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/> with the specified type.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.IReflectionCache.Add(System.Type)">
+            <summary>
+            Adds a type to the cache.
+            </summary>
+            <param name="type">Type to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.IReflectionCache.Remove(System.Type)">
+            <summary>
+            Removes a type from the cache.
+            </summary>
+            <param name="type">Type to be removed.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.IReflectionCache.GetClass(System.Type)">
+            <summary>
+            Gets an <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/> for a certain type.
+            </summary>
+            <remarks>If the type being getted doesn't exist, it'll be created.</remarks>
+            <param name="type">Type to look for.</param>
+            <returns>The reflected class.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.IReflectionCache.Contains(System.Type)">
+            <summary>
+            Checks whether a cache exists for a certain type.
+            </summary>
+            <param name="type">Type to be removed.</param>
+            <returns>Boolean.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.IReflectionCache.CacheFromBinder(MediaLab.Adic.Framework.Binding.IBinder)">
+            <summary>
+            Caches reflected classes from a binder.
+            
+            It'll use as reference all the binding type values.
+            </summary>
+            <param name="binder">The binder.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.IReflectionFactory">
+            <summary>
+            Defines a factory for <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/>.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.IReflectionFactory.Create(System.Type)">
+            <summary>
+            Creates a <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/> from a <paramref name="type"/>.
+            </summary>
+            <param name="type">Type from which the reflected class will be created.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.MethodInfo">
+            <summary>
+            Method info.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.MethodInfo.#ctor(System.String,MediaLab.Adic.Framework.Cache.ParameterInfo[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Cache.MethodInfo"/> class.
+            </summary>
+            <param name="name">Method name.</param>
+            <param name="parameters">Method parameters' infos.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.MethodInfo.Method">
+            <summary>The parameterless method.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.MethodInfo.Name">
+            <summary>Method name.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.MethodInfo.ParamsMethod">
+            <summary>The method with parameters.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.MethodInfo.Parameters">
+            <summary>Method parameters' infos.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.ParameterInfo">
+            <summary>
+            Parameter info.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ParameterInfo.#ctor(System.Type,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Cache.ParameterInfo"/> class.
+            </summary>
+            <param name="type">Setter type.</param>
+            <param name="name">Parameter name.</param>
+            <param name="identifier">Resolution identifier.</param>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ParameterInfo.Type">
+            <summary>Setter type.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ParameterInfo.Name">
+            <summary>Parameter name.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ParameterInfo.Identifier">
+            <summary>Resolution identifier.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.ReflectedClass">
+            <summary>
+            Basic reflected class.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.Type">
+            <summary>The type the reflected class represents.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.Constructor">
+            <summary>The parameterless constructor of the class.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.ParamsConstructor">
+            <summary>The constructor with parameters of the class.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.ConstructorParameters">
+            <summary>Constructor parameters' infos.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.Methods">
+            <summary>Methods that have the Inject attribute.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.Properties">
+            <summary>Public properties of the type that can receive injection.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectedClass.Fields">
+            <summary>Public fields of the type that can receive injection.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.ReflectionCache">
+            <summary>
+            Basic cache for reflection data.
+            
+            When requesting a type, if it doesn't exist on the cache,
+            it's automatically created on the cache.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Cache.ReflectionCache.classes">
+            <summary>Reflected classes on the cache.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Cache.ReflectionCache"/> class.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectionCache.ReflectionFactory">
+            <summary>Reflection factory used to generate items on the cache.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Cache.ReflectionCache.Item(System.Type)">
+            <summary>Gets the <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/> with the specified type.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.Add(System.Type)">
+            <summary>
+            Adds a type to the cache.
+            </summary>
+            <param name="type">Type to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.Remove(System.Type)">
+            <summary>
+            Removes a type from the cache.
+            </summary>
+            <param name="type">Type to be removed.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.GetClass(System.Type)">
+            <summary>
+            Gets an<see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/> for a certain type.
+            </summary>
+            <remarks>If the type being getted doesn't exist, it'll be created.</remarks>
+            <param name="type">Type to look for.</param>
+            <returns>The reflected class.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.Contains(System.Type)">
+            <summary>
+            Checks whether a cache exists for a certain type.
+            </summary>
+            <param name="type">Type to be removed.</param>
+            <returns>Boolean.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.CacheFromBinder(MediaLab.Adic.Framework.Binding.IBinder)">
+            <summary>
+            Caches reflected classes from a binder.
+            
+            It'll use as reference all the binding type values.
+            </summary>
+            <param name="binder">The binder.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionCache.ReflectionFactoryProvider">
+            <summary>
+            Resolves the reflection factory provider.
+            </summary>
+            <returns>The reflection factory provider.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Cache.ReflectionFactory">
+            <summary>
+            Factory for <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/>.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionFactory.Create(System.Type)">
+            <summary>
+            Creates a <see cref="T:MediaLab.Adic.Framework.Cache.ReflectedClass"/> from a <paramref name="type"/>.
+            </summary>
+            <param name="type">Type from which the reflected class will be created.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionFactory.ResolveConstructor(System.Type)">
+            <summary>
+            Selects the constructor marked with <see cref="T:MediaLab.Adic.Framework.Attributes.Inject"/> or with the minimum amount of parameters.
+            </summary>
+            <param name="type">Type from which reflection will be resolved.</param>
+            <returns>The constructor.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionFactory.ResolveConstructorParameters(System.Reflection.ConstructorInfo)">
+            <summary>
+            Resolves the constructor parameters.
+            </summary>
+            <param name="constructor">The constructor to have the parameters resolved.</param>
+            <returns>The constructor parameters.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionFactory.ResolveMethods(System.Type)">
+            <summary>
+            Resolves the methods that can be injected.
+            </summary>
+            <returns>The methods with Inject attributes.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionFactory.ResolveProperties(System.Type)">
+            <summary>
+            Resolves the properties that can be injected.
+            </summary>
+            <param name="type">Type from which reflection will be resolved.</param>
+            <returns>The properties.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Cache.ReflectionFactory.ResolveFields(System.Type)">
+            <summary>
+            Resolves the fields that can be injected.
+            </summary>
+            <param name="type">Type from which reflection will be resolved.</param>
+            <returns>The fields.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Container.IContainerExtension">
+            <summary>
+            Defines an extension for an <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/>.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IContainerExtension.Init(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Initializes the extension. Called after all extensions have been registered.
+            </summary>
+            <param name="container">The container into which the extension is registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IContainerExtension.OnRegister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is registered on the container.
+            
+            When the method is called, subscribe to any events the container may provide.
+            </summary>
+            <param name="container">The container into which the extension is being registered.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IContainerExtension.OnUnregister(MediaLab.Adic.Framework.Container.IInjectionContainer)">
+            <summary>
+            Called when the extension is unregistered from the container.
+            
+            When the method is called, unsubscribe from any events on the container.
+            </summary>
+            <param name="container">The container from which the extension is being unregistered.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Container.IInjectionContainer">
+            <summary>
+            Defines a container for dependency injection.
+            
+            A container holds binding references, resolves types and injects dependencies.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Container.IInjectionContainer.Identifier">
+            <summary>Container identifier.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Container.IInjectionContainer.Cache">
+            <summary>Reflection cache used to get type info.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.Init">
+            <summary>
+            Initializes the container.
+            </summary>
+            <remarks>
+            Should be called after all extensions and bindings have been added.
+            </remarks>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.RegisterExtension``1">
+            <summary>
+            Registers a container extension.
+            </summary>
+            <typeparam name="T">The type of the extension to be registered.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.UnregisterExtension``1">
+            <summary>
+            Unegisters a container extension.
+            </summary>
+            <typeparam name="T">The type of the extension to be unregistered.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.GetExtension``1">
+            <summary>
+            Gets a extension registered in the container.
+            </summary>
+            <typeparam name="T">The type of the extension to get.</typeparam>
+            <returns>The extension.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.GetExtension(System.Type)">
+            <summary>
+            Gets a extension registered in the container.
+            </summary>
+            <param name="type">The type of the extension.</param>
+            <returns>The extension.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.HasExtension``1">
+            <summary>
+            Check whether an extensions is added to this container.
+            </summary>
+            <typeparam name="T">The type of the extension.</typeparam>
+            <returns><c>true</c> if the container has extension; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.HasExtension(System.Type)">
+            <summary>
+            Check whether an extensions is added to this container.
+            </summary>
+            <param name="type">The type of the extension.</param>
+            <returns><c>true</c> if the container has extension; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.IInjectionContainer.Clear">
+            <summary>
+            Clear the container, removing all its bindings.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Container.InjectionContainer">
+            <summary>
+            A dependency injector container.
+            
+            It's a convenient class that act as binder and injector at the same time
+            and allows the use of extensions to provide new functionalities.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Container.InjectionContainer.DefaultResolutionMode">
+            <summary>Default instance resolution mode.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Container.InjectionContainer.initialized">
+            <summary>Indicates whether the container has been initialized.</summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Container.InjectionContainer.extensions">
+            <summary>Registered container extensions.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <remarks>
+            When passing no parameters to the constructor, default internal objects are created.
+            </remarks>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <remarks>
+            When passing no parameters to the constructor, default internal objects are created.
+            </remarks>
+            <param name="identifier">Container identifier.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(MediaLab.Adic.Framework.Cache.IReflectionCache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <remarks>
+            Default binder and injector objects are created.
+            </remarks>
+            <param name="cache">Reflection cache used to get type info.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <param name="resolutionMode">Instance resolution mode.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(System.Object,MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <param name="identifier">Container identifier.</param>
+            <param name="resolutionMode">Instance resolution mode.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(System.Object,MediaLab.Adic.Framework.Cache.IReflectionCache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <remarks>
+            Default binder and injector objects are created.
+            </remarks>
+            <param name="identifier">Container identifier.</param>
+            <param name="cache">Reflection cache used to get type info.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(MediaLab.Adic.Framework.Cache.IReflectionCache,MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <remarks>
+            Default binder and injector objects are created.
+            </remarks>
+            <param name="cache">Reflection cache used to get type info.</param>
+            <param name="resolutionMode">Instance resolution mode.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(MediaLab.Adic.Framework.Cache.IReflectionCache,MediaLab.Adic.Framework.Binding.IBinder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <param name="cache">Reflection cache used to get type info.</param>
+            <param name="binder">Binder to be used on the container.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(System.Object,MediaLab.Adic.Framework.Cache.IReflectionCache,MediaLab.Adic.Framework.Binding.IBinder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <param name="identifier">Container identifier.</param>
+            <param name="cache">Reflection cache used to get type info.</param>
+            <param name="binder">Binder to be used on the container.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(System.Object,MediaLab.Adic.Framework.Cache.IReflectionCache,MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <param name="identifier">Container identifier.</param>
+            <param name="cache">Reflection cache used to get type info.</param>
+            <param name="resolutionMode">Instance resolution mode.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.#ctor(System.Object,MediaLab.Adic.Framework.Cache.IReflectionCache,MediaLab.Adic.Framework.Binding.IBinder,MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Container.InjectionContainer"/> class.
+            </summary>
+            <param name="identifier">Container identifier.</param>
+            <param name="cache">Reflection cache used to get type info.</param>
+            <param name="binder">Binder to be used on the container.</param>
+            <param name="resolutionMode">Instance resolution mode.</param>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Container.InjectionContainer.BeforeAddBinding">
+            <summary>Occurs before a binding is added.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Container.InjectionContainer.AfterAddBinding">
+            <summary>Occurs before a binding is removed.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Container.InjectionContainer.BeforeRemoveBinding">
+            <summary>Occurs before a binding is removed.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Container.InjectionContainer.AfterRemoveBinding">
+            <summary>Occurs after a binding is removed.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Container.InjectionContainer.Identifier">
+            <summary>Container identifier.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Init">
+            <summary>
+            Initializes the container.
+            </summary>
+            <remarks>
+            Should be called after all extensions and bindings have been added.
+            </remarks>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Dispose">
+            <summary>
+            Disposes the container
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.RegisterExtension``1">
+            <summary>
+            Registers a container extension.
+            </summary>
+            <typeparam name="T">The type of the extension to be registered.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.UnregisterExtension``1">
+            <summary>
+            Unegisters a container extension.
+            </summary>
+            <typeparam name="T">The type of the extension to be unregistered.</typeparam>
+            <returns>The injection container for chaining.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetExtension``1">
+            <summary>
+            Gets a extension registered in the container.
+            </summary>
+            <typeparam name="T">The type of the extension to get.</typeparam>
+            <returns>The extension.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetExtension(System.Type)">
+            <summary>
+            Gets a extension registered in the container.
+            </summary>
+            <param name="type">The type of the extension.</param>
+            <returns>The extension.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.HasExtension``1">
+            <summary>
+            Check whether an extensions is added to this container.
+            </summary>
+            <typeparam name="T">The type of the extension.</typeparam>
+            <returns><c>true</c> if the container has extension; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.HasExtension(System.Type)">
+            <summary>
+            Check whether an extensions is added to this container.
+            </summary>
+            <param name="type">The type of the extension.</param>
+            <returns><c>true</c> if the container has extension; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Clear">
+            <summary>
+            Clear the container, removing all its bindings.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Bind``1">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <typeparam name="T">The type to bind to.</typeparam>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Bind(System.Type)">
+            <summary>
+            Binds a type to another type or instance.
+            </summary>
+            <param name="type">The type to bind to.</param>
+            <returns>The binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.AddBinding(MediaLab.Adic.Framework.Binding.BindingInfo)">
+            <summary>
+            Adds a binding.
+            </summary>
+            <param name="binding">The binding to be added.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetBindings">
+            <summary>
+            Gets all bindings.
+            </summary>
+            <returns>Bindings list.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetBindingsFor``1">
+            <summary>
+            Gets the bindings for a given <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to get the bindings from.</typeparam>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetBindingsFor(System.Type)">
+            <summary>
+            Gets the bindings for a given type.
+            </summary>
+            <param name="type">The type to get the bindings from.</param>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetBindingsFor(System.Object)">
+            <summary>
+            Gets the bindings for a given identifier.
+            </summary>
+            <param name="identifier">The identifier to get the bindings from.</param>
+            <returns>The bindings for the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetBindingsTo``1">
+            <summary>
+            Gets the bindings to a given <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to get the bindings from.</typeparam>
+            <returns>The bindings to the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GetBindingsTo(System.Type)">
+            <summary>
+            Gets the bindings to a given type/>
+            </summary>
+            <param name="type">The type to get the bindings from.</param>
+            <returns>The bindings to the desired type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.ContainsBindingFor``1">
+            <summary>
+            Checks whether this binder contains a binding for a given <typeparamref name="T"/>.
+            </summary>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.ContainsBindingFor(System.Type)">
+            <summary>
+            Checks whether this binder contains a binding for a given <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to be checked.</param>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.ContainsBindingFor(System.Object)">
+            <summary>
+            Checks whether this binder contains a binding for a given <paramref name="identifier"/>.
+            </summary>
+            <returns><c>true</c>, if binding was contained, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Unbind``1">
+            <summary>
+            Unbinds any bindings to a certain <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to be unbound.</typeparam>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Unbind(System.Type)">
+            <summary>
+            Unbinds any bindings to a certain <paramref name="type"/>.
+            </summary>
+            <param name="type">The type to be unbound.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.Unbind(System.Object)">
+            <summary>
+            Unbinds any bindings to a certain <paramref name="identifier"/>.
+            </summary>
+            <param name="identifier">The identifier to be unbound.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.UnbindInstance(System.Object)">
+            <summary>
+            Unbinds any bindings that holds the given instance, either as a value or on conditions.
+            </summary>
+            <param name="instance">Instance.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.UnbindByTag(System.String)">
+            <summary>
+            Unbinds any bindings that contains the given tag.
+            </summary>
+            <param name="tag">Tag value.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.RegisterItself">
+            <summary>
+            Registers the container on itself, so any object that want to receive
+            a reference to it just reference <see cref="T:MediaLab.Adic.Framework.Container.IInjectionContainer"/>.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Container.InjectionContainer.GenerateIdentifier">
+            <summary>
+            Generates a container identifier.
+            </summary>
+            <returns>The container identifier.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Exceptions.BinderException">
+            <summary>
+            Binder exception.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.BinderException.NullBinding">
+            <summary>
+            Message for exception when there is no binding to be bound
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.BinderException.BindingKeyAlreadyExists">
+            <summary>
+            Message for exception when there's already a binding with the same key
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.BinderException.BindingToInterface">
+            <summary>
+            Format message for exception when it's not possible to bind a key to an interface
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Exceptions.BinderException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Exceptions.BinderException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Exceptions.BindingException">
+            <summary>
+            Binding exception.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.BindingException.TypeNotAssignable">
+            <summary>
+            Format message for exception when the related type is not assignable from the source type
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.BindingException.TypeNotImplementInterface">
+            <summary>
+            Format message for exception when the type doesn't implement IFactory
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.BindingException.InstanceNotAssignable">
+            <summary>
+            Format message for exception when the instance is not of the given type
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Exceptions.BindingException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Exceptions.BindingException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Exceptions.InjectorException">
+            <summary>
+            Injector exception.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.InjectorException.NoConstructors">
+            <summary>
+            Format message for exception when there are no constructors on the type
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.InjectorException.CannotInstantiateInterface">
+            <summary>
+            Format message for exception when interface cannot be instantiated
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.InjectorException.PropertyNotImplementSetter">
+            <summary>
+            Format message for exception when a property does not implement the setter method
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.InjectorException.CannotInjectOnProperty">
+            <summary>
+            Format message for exception when unable to inject on property at object
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.InjectorException.CannotInjectOnField">
+            <summary>
+            Format message for exception when unable to inject on field at object
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Exceptions.InjectorException.CannotInjectOnMethod">
+            <summary>
+            Format message for exception when unable to inject on method at object
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Exceptions.InjectorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Exceptions.InjectorException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Exceptions.InjectorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Exceptions.InjectorException"/> class.
+            </summary>
+            <param name="message">Exception message.</param>
+            <param name="cause">Exception that caused this exception to throw.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.IInjector">
+            <summary>
+            Defines a dependency injector which injects dependencies on instances.
+            </summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.IInjector.BeforeResolve">
+            <summary>Occurs before a type is resolved.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.IInjector.AfterResolve">
+            <summary>Occurs after a type is resolved.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.IInjector.BindingEvaluation">
+            <summary>Occurs when a binding is available for resolution.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.IInjector.BindingResolution">
+            <summary>Occurs when a binding is resolved to an instance.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.IInjector.BeforeInject">
+            <summary>Occurs before an instance receives injection.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.IInjector.AfterInject">
+            <summary>Occurs after an instance receives injection.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.IInjector.ResolutionMode">
+            <summary>Instance resolution mode.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Resolve``1">
+            <summary>
+            Resolves an instance for a specified type.
+            </summary>
+            <remarks>
+            If the type has multiple instances, please use ResolveAll<T/>().
+            </remarks>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Resolve``1(System.Object)">
+            <summary>
+            Resolves an instance for a specified type with a given identifier.
+            </summary>
+            <remarks>
+            If the type has multiple instances, please use ResolveAll<T/>().
+            </remarks>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Resolve(System.Type)">
+            <summary>
+            Resolves an instance for a specified type.
+            </summary>
+            <remarks>
+            If the type has multiple instances, it will return an IList>.
+            </remarks>
+            <param name="type">Type to be resolved.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Resolve(System.Object)">
+            <summary>
+            Resolves an instance with a given identifier.
+            </summary>
+            <remarks>
+            If the type has multiple instances, please use ResolveAll().
+            </remarks>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Resolve(System.Type,System.Object)">
+            <summary>
+            Resolves an instance for a specified type with a given identifier.
+            </summary>
+            <remarks>
+            If the type has multiple instances, it will return an IList>.
+            </remarks>
+            <param name="type">Type to be resolved.</param>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.ResolveAll``1">
+            <summary>
+            Resolves a list of instances for a specified type.
+            </summary>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.ResolveAll``1(System.Object)">
+            <summary>
+            Resolves a list of instances for a specified type with a given identifier.
+            </summary>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.ResolveAll(System.Type)">
+            <summary>
+            Resolves a list of instances for a specified type.
+            </summary>
+            <param name="type">Type to be resolved.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.ResolveAll(System.Object)">
+            <summary>
+            Resolves a list of instances with a given identifier.
+            </summary>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.ResolveAll(System.Type,System.Object)">
+            <summary>
+            Resolves a list of instances for a specified type with a given identifier.
+            </summary>
+            <param name="type">Type to be resolved.</param>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Inject``1(``0)">
+            <summary>
+            Injects dependencies on an instance of an object.
+            </summary>
+            <typeparam name="T">The type of the object to be resolved.</typeparam>
+            <param name="instance">Instance to receive injection.</param>
+            <returns>The instance with all its dependencies injected.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.IInjector.Inject(System.Object)">
+            <summary>
+            Injects dependencies on an instance of an object.
+            </summary>
+            <param name="instance">Instance to receive injection.</param>
+            <returns>The instance with all its dependencies injected.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.TypeResolutionHandler">
+            <summary>
+            Type resolution handler.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="type">Binding type.</param>
+            <param name="member">Member for which the binding is being resolved.</param>
+            <param name="parentInstance">Parent object in which the resolve is occuring.</param>
+            <param name="identifier">The binding identifier to be looked for.</param>
+            <param name="resolutionInstance">The instance resolved, by reference.</param>
+            <returns>
+            Boolean value indicating whether the resolution of the type should continue.
+            
+            If the method returns false, the resolution system will return the value
+            of <paramref name="resolutionInstance"/>.
+            </returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.BindingEvaluationHandler">
+            <summary>
+            Binding evaluation handler, called for each binding that is available to a certain
+            resolution evaluation.
+            
+            The event is dispatched inside the ResolveBinding method right after all the resolution
+            conditions have been fulfilled and before the instance is actually resolved.
+            
+            This handler can be used e.g. to alter the instance before it's actually resolved.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="binding">The binding to have an instance resolved.</param>
+            <returns>The evaluated instance or NULL if the evaluation should occur by the injector.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.BindingResolutionHandler">
+            <summary>
+            Binding resolution handler, called for each instance that is resolved from a certain binding.
+            
+            The event is dispatched inside the ResolveBinding method right after the instance is 
+            actually resolved.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="binding">The binding from which the instance has been resolved.</param>
+            <param name="instance">The resolved instance.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.InstanceInjectionHandler">
+            <summary>
+            Instance injection handler.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="instance">The instance to have its dependencies resolved, passed by reference.</param>
+            <param name="reflectedClass">The reflected class related to the <paramref name="instance"/>.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.InjectionContext">
+            <summary>
+            Injection context.
+            </summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.Member">
+            <summary>The class member in which the injection is occuring.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.MemberType">
+            <summary>The type of the member in which the injection is occuring.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.MemberName">
+            <summary>The name of the member in which the injection is occuring.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.Identifier">
+            <summary>The identifier of the member in which the injection is occuring (from InjectAttribute).</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.ParentType">
+            <summary>The type of the object in which the injection is occuring.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.ParentInstance">
+            <summary>The instance of the object in which the injection is occuring.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.InjectionContext.InjectType">
+            <summary>The type of the object being injected.</summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.InjectionMember">
+            <summary>
+            Class members in which injection can occur.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.InjectionMember.None">
+            <summary>
+            None class members
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.InjectionMember.Constructor">
+            <summary>
+            Constructors class
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.InjectionMember.Method">
+            <summary>
+            Methods class
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.InjectionMember.Field">
+            <summary>
+            Fields class
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.InjectionMember.Property">
+            <summary>
+            Properties class
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.Injector">
+            <summary>
+            An injector that uses a binder to resolve bindings.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.#ctor(MediaLab.Adic.Framework.Cache.IReflectionCache,MediaLab.Adic.Framework.Binding.IBinder,MediaLab.Adic.Framework.Injection.ResolutionMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MediaLab.Adic.Framework.Injection.Injector"/> class.
+            </summary>
+            <param name="cache">Reflection cache used to get type info.</param>
+            <param name="binder">Binder used to resolved bindings.</param>
+            <param name="resolutionMode">Defines how instances resolution are done</param>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.Injector.BeforeResolve">
+            <summary>Occurs before a type is resolved.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.Injector.AfterResolve">
+            <summary>Occurs after a type is resolved.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.Injector.BindingEvaluation">
+            <summary>Occurs when a binding is available for resolution.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.Injector.BindingResolution">
+            <summary>Occurs when a binding is resolved to an instance.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.Injector.BeforeInject">
+            <summary>Occurs before an instance receives injection.</summary>
+        </member>
+        <member name="E:MediaLab.Adic.Framework.Injection.Injector.AfterInject">
+            <summary>Occurs after an instance receives injection.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.Injector.Cache">
+            <summary>Reflection cache used to get type info.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.Injector.Binder">
+            <summary>Binder used to resolved bindings.</summary>
+        </member>
+        <member name="P:MediaLab.Adic.Framework.Injection.Injector.ResolutionMode">
+            <summary>Instance resolution mode.</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Resolve``1">
+            <summary>
+            Resolves an instance for a specified type.
+            </summary>
+            <remarks>
+            If the type has multiple instances, please use ResolveAll<T/>().
+            </remarks>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Resolve``1(System.Object)">
+            <summary>
+            Resolves an instance for a specified type with a given identifier.
+            </summary>
+            <remarks>
+            If the type has multiple instances, please use ResolveAll<T/>().
+            </remarks>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Resolve(System.Type)">
+            <summary>
+            Resolves an instance for a specified type.
+            </summary>
+            <remarks>
+            If the type has multiple instances, it will return an IList.
+            </remarks>
+            <param name="type">Type to be resolved.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Resolve(System.Object)">
+            <summary>
+            Resolves an instance with a given identifier.
+            </summary>
+            <remarks>
+            If the type has multiple instances, please use ResolveAll().
+            </remarks>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Resolve(System.Type,System.Object)">
+            <summary>
+            Resolves an instance for a specified type with a given identifier.
+            </summary>
+            <remarks>
+            If the type has multiple instances, it will return an IList/>.
+            </remarks>
+            <param name="type">Type to be resolved.</param>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The instance or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.ResolveAll``1">
+            <summary>
+            Resolves a list of instances for a specified type.
+            </summary>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.ResolveAll``1(System.Object)">
+            <summary>
+            Resolves a list of instances for a specified type with a given identifier.
+            </summary>
+            <typeparam name="T">Type to be resolved.</typeparam>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.ResolveAll(System.Type)">
+            <summary>
+            Resolves a list of instances for a specified type.
+            </summary>
+            <param name="type">Type to be resolved.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.ResolveAll(System.Object)">
+            <summary>
+            Resolves a list of instances with a given identifier.
+            </summary>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.ResolveAll(System.Type,System.Object)">
+            <summary>
+            Resolves a list of instances for a specified type with a given identifier.
+            </summary>
+            <param name="type">Type to be resolved.</param>
+            <param name="identifier">Identifier to look for.</param>
+            <returns>The list of instances or NULL if there are no instances.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Inject``1(``0)">
+            <summary>
+            Injects dependencies on an instance of an object.
+            </summary>
+            <typeparam name="T">The type of the object to be resolved.</typeparam>
+            <param name="instance">Instance to receive injection.</param>
+            <returns>The instance with all its dependencies injected.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Inject(System.Object)">
+            <summary>
+            Injects dependencies on an instance of an object.
+            </summary>
+            <param name="instance">Instance to receive injection.</param>
+            <returns>The instance with all its dependencies injected.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Resolve(System.Type,MediaLab.Adic.Framework.Injection.InjectionMember,System.String,System.Object,System.Object,System.Boolean)">
+            <summary>
+            Resolves an instance for a specified type at a certain member in an instance with a given identifier.
+            </summary>
+            <param name="type">Binding type.</param>
+            <param name="member">Member for which the binding is being resolved.</param>
+            <param name="memberName">Member name in which the binding is being resolved.</param>
+            <param name="parentInstance">Parent object in which the resolve is occuring.</param>
+            <param name="identifier">The binding identifier to be looked for.</param>
+            <param name="alwaysResolve">Always resolve the type, even when resolution mode is null.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Inject(System.Object,MediaLab.Adic.Framework.Cache.ReflectedClass)">
+            <summary>
+            Injects dependencies on an instance of an object.
+            </summary>
+            <param name="instance">The instance to have its dependencies resolved.</param>
+            <param name="reflectedClass">The reflected class related to the <paramref name="instance"/>.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.InjectFields(System.Object,MediaLab.Adic.Framework.Cache.AcessorInfo[])">
+            <summary>
+            Injects on fields.
+            </summary>
+            <remarks>
+            The value is set only if the field has no value already set.
+            </remarks>
+            <param name="instance">The instance to have its dependencies resolved.</param>
+            <param name="fields">Public fields of the type that can receive injection.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.InjectProperties(System.Object,MediaLab.Adic.Framework.Cache.AcessorInfo[])">
+            <summary>
+            Injects on properties.
+            </summary>
+            <remarks>
+            The value is set only if the property has no value already set.
+            </remarks>
+            <param name="instance">The instance to have its dependencies resolved.</param>
+            <param name="properties">Public properties of the type that can receive injection.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.InjectMethods(System.Object,MediaLab.Adic.Framework.Cache.MethodInfo[])">
+            <summary>
+            Injects on methods.
+            </summary>
+            <param name="instance">The instance to have its dependencies resolved.</param>
+            <param name="methods">Methods that have the Inject attribute.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.ResolveBinding(MediaLab.Adic.Framework.Binding.BindingInfo,System.Type,MediaLab.Adic.Framework.Injection.InjectionMember,System.String,System.Object,System.Object)">
+            <summary>
+            Resolves the binding.
+            </summary>
+            <param name="binding">Binding to be resolved.</param>
+            <param name="type">Binding type.</param>
+            <param name="member">Member for which the binding is being resolved.</param>
+            <param name="memberName">Member name in which the binding is being resolved.</param>
+            <param name="parentInstance">Parent object in which the resolve is occuring.</param>
+            <param name="identifier">The binding identifier to be looked for.</param>
+            <returns>The resolved instance from the binding.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.Instantiate(System.Type)">
+            <summary>
+            Instantiate and resolve dependencies for the specified type.
+            </summary>
+            <param name="type">The type to be instantiated.</param>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.GetParametersFromInfo(System.Object,MediaLab.Adic.Framework.Cache.ParameterInfo[],MediaLab.Adic.Framework.Injection.InjectionMember)">
+            <summary>
+            Gets parameters from a collection of <see cref="T:MediaLab.Adic.Framework.Cache.ParameterInfo"/>.
+            </summary>
+            <param name="instance">The instance to have its dependencies resolved.</param>
+            <param name="parametersInfo">Parameters info collection.</param>
+            <param name="injectionMember">The member in which the injection is taking place.</param>
+            <returns>The parameters.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Injection.Injector.OnBeforeAddBinding(MediaLab.Adic.Framework.Binding.IBinder,MediaLab.Adic.Framework.Binding.BindingInfo@)">
+            <summary>
+            Handles the before add binding event.
+            </summary>
+            <param name="source">The source of the event.</param>
+            <param name="binding">The binding to be added, by reference.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Injection.ResolutionMode">
+            <summary>
+            Defines how instance resolution is done.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.ResolutionMode.AlwaysResolve">
+            <summary>
+            Always try to resolve every type that requires injection, even ones that are not bound to the container.
+            
+            This is the default resoltion mode.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Injection.ResolutionMode.ReturnNull">
+            <summary>
+            Only resolves types that are bound to the container. Trying to resolve a non-bound type will return a
+            null reference.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Types.IFactory">
+            <summary>
+            Defines a factory of instances.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Types.IFactory.Create(MediaLab.Adic.Framework.Injection.InjectionContext)">
+            <summary>
+            Creates an instance of the object of the type created by the factory.
+            </summary>
+            <param name="context">Injection context.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.ConstructorCall">
+            <summary>
+            Delegate for a constructor call without parameters.
+            </summary>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.ParamsConstructorCall">
+            <summary>
+            Delegate for a constructor call with parameters.
+            </summary>
+            <param name="parameters">Constructor parameters.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.MethodCall">
+            <summary>
+            Delegate for a method call without parameters.
+            </summary>
+            <param name="instance">Instance to call the post constructor.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.ParamsMethodCall">
+            <summary>
+            Delegate for a method call with parameters.
+            </summary>
+            <param name="instance">Instance to call the post constructor.</param>
+            <param name="parameters">Post constructor parameters.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.GetterCall">
+            <summary>
+            Calls a getter method for a field or property.
+            </summary>
+            <param name="instance">Instance to have the field/property gotten.</param>
+            <returns>Getter value.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.SetterCall">
+            <summary>
+            Calls a setter method for a field or property.
+            </summary>
+            <param name="instance">Instance to have the field/property settled.</param>
+            <param name="value">Value to set.</param>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.MethodUtils">
+            <summary>
+            Utility class for dynamic methods creation.
+            </summary>
+        </member>
+        <member name="F:MediaLab.Adic.Framework.Util.MethodUtils.ObjectType">
+            <summary>The type "object".</summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreateConstructor(System.Type,System.Reflection.ConstructorInfo)">
+            <summary>
+            Creates a constructor method with no parameters for an object.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="constructor">Constructor info used to create the function.</param>
+            <returns>The object constructor.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreateConstructorWithParams(System.Type,System.Reflection.ConstructorInfo)">
+            <summary>
+            Creates a constructor method with parameters for an object of specified type/>.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="constructor">Constructor info used to create the function.</param>
+            <returns>The object constructor.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreateFieldSetter(System.Type,System.Reflection.FieldInfo)">
+            <summary>
+            Creates a field setter method.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="fieldInfo">Field info object.</param>
+            <returns>The field setter.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreateFieldGetter(System.Type,System.Reflection.FieldInfo)">
+            <summary>
+            Creates a field getter method.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="fieldInfo">Field info object.</param>
+            <returns>The field getter.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreatePropertySetter(System.Type,System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a property setter method.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="propertyInfo">Property info object.</param>
+            <returns>The property setter.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreatePropertyGetter(System.Type,System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a property getter method.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="propertyInfo">Property info object.</param>
+            <returns>The property getter or null if the property can't be read.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreateParameterlessMethod(System.Type,System.Reflection.MethodInfo)">
+            <summary>
+            Creates method call without parameters.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="methodInfo">Method info object.</param>
+            <returns>The method caller.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.MethodUtils.CreateParameterizedMethod(System.Type,System.Reflection.MethodInfo)">
+            <summary>
+            Creates method call with parameters.
+            </summary>
+            <param name="type">Object type.</param>
+            <param name="methodInfo">Method info object.</param>
+            <returns>The method caller.</returns>
+        </member>
+        <member name="T:MediaLab.Adic.Framework.Util.TypeUtils">
+            <summary>
+            Utility class for types.
+            </summary>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.IsAssignable(System.Type,System.Type)">
+            <summary>
+            Determines whether <paramref name="potentialDescendant"/> is the same
+            or a subclass of <paramref name="potentialBase"/>.
+            </summary>
+            <param name="potentialBase">Potential base type.</param>
+            <param name="potentialDescendant">Potential descendant type.</param>
+            <returns>Boolean.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetAssignableTypes(System.Type)">
+            <summary>
+            Gets all types assignable from a given <paramref name="baseType"/>.
+            </summary>
+            <remarks>
+            Excludes any types in assemblies from Unity or Mono.
+            </remarks>
+            <param name="baseType">Base type from which the types in the namespace must be assignable.</param>
+            <returns>The assignable types in the namespace.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetAssignableTypes(System.Type,System.String)">
+            <summary>
+            Gets all types assignable from a given <paramref name="baseType"/> 
+            in a given <paramref name="namespaceName"/>.
+            </summary>
+            <remarks>
+            Excludes any types in assemblies from Unity or Mono.
+            </remarks>
+            <param name="baseType">Base type from which the types in the namespace must be assignable.</param>
+            <param name="namespaceName">Namespace name.</param>
+            <returns>The assignable types in the namespace.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetAssignableTypes(System.Type,System.String,System.Boolean)">
+            <summary>
+            Gets all types assignable from a given <paramref name="baseType"/> 
+            in a given <paramref name="namespaceName"/>.
+            </summary>
+            <remarks>
+            Excludes any types in assemblies from Unity or Mono.
+            </remarks>
+            <param name="baseType">Base type from which the types in the namespace must be assignable.</param>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="includeChildren">Indicates whether children namespaces should be included.</param>
+            <returns>The assignable types in the namespace.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetAssignableTypes(System.Type,System.Type)">
+            <summary>
+            Gets all types assignable from a base type to derived type
+            </summary>
+            <param name="baseType">Base type from which the derived types must be assignable</param>
+            <param name="derivedType">The type to compare with base type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetType(System.String)">
+            <summary>
+            Gets a type from a type name.
+            </summary>
+            <remarks>
+            Excludes any type in assemblies from Unity or Mono.
+            </remarks>
+            <param name="typeName">Type name.</param>
+            <returns>The type or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetType(System.String,System.String)">
+            <summary>
+            Gets a type from a namespace and type names.
+            </summary>
+            <remarks>
+            Excludes any type in assemblies from Unity or Mono.
+            </remarks>
+            <param name="namespaceName">Namespace name.</param>
+            <param name="typeName">Type name.</param>
+            <returns>The type or NULL.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetAllFields(System.Type,System.Reflection.BindingFlags)">
+            <summary>
+            Gets all the fields in the hierarchy of given type.
+            </summary>
+            <param name="type">Type of class</param>
+            <param name="bindingFlags">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the search is conducted.</param>
+            <returns>Returns all the fields in the hierarchy of given type.</returns>
+        </member>
+        <member name="M:MediaLab.Adic.Framework.Util.TypeUtils.GetAllProperties(System.Type,System.Reflection.BindingFlags)">
+            <summary>
+            Gets all the properties in the hierarchy of given type.
+            </summary>
+            <param name="type">Type of class</param>
+            <param name="bindingFlags">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags"/> that specify how the search is conducted.</param>
+            <returns>Returns all the properties in the hierarchy of given type.</returns>
+        </member>
+    </members>
+</doc>
